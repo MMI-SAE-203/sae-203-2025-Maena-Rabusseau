@@ -21,19 +21,3 @@
   --small: 13px
 }
 
-
-@layer base {
-    body {
-      @apply font-open body1 regular;
-    }
-    h1 {
-      @apply --heading1 font-sand medium ;
-    }
-    h2 {
-      @apply --heading2 font-sand medium;
-    }
-    h3 {
-      @apply --heading3 font-sand regular;
-    }
-
-  }

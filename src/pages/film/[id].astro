@@ -1,0 +1,22 @@
+---
+import { oneIDFilm } from '../../../backend/backend.mjs';
+import Base  from '../../layouts/Base.astro';
+
+
+/*Affichage du détail d’un élément de la collection en utilisant une route dynamique.*/
+
+const { id } = Astro.params;
+const film = await oneIDFilm(id);
+if(!film){
+   return Astro.redirect('/programme');
+}
+---
+
+
+<Base titre={film.Titre}>
+   <p>Synopsis :</p> <li>{film.Description}</li>
+    <ul>
+        <p>Liste des acteurs : </p><li>{film.Liste_des_acteurs}</li>
+    <p>Genre : </p>  <li>  {film.Genre}</li>
+    </ul>
+</Base>

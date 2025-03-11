@@ -5,8 +5,11 @@ import PocketBase from "pocketbase";
 const POCKETBASE_URL = "http://127.0.0.1:8090";
 
 // Création de l'instance PocketBase avec l'URL définie plus haut
-const pb = new PocketBase("http://127.0.0.1:8090");
+const pb = new PocketBase(POCKETBASE_URL);
 
+
+  // Exportation de l'instance PocketBase pour l'utiliser dans d'autres fichiers
+  export { pb };
 
 
 
@@ -141,4 +144,30 @@ export async function newUser(newuser) {
 
 
 
+/* fonction de filtage des films par genre*/
 
+export async function filterByGenre(Genre) {
+    try {
+        let data = await pb.collection('Films').getFullList({sort: 'projection', filter: `Genre ~ '${Genre}'` 
+        });
+        console.log(data);
+
+
+        data = data.map((film) => {
+            if (film.image) {
+                film.imageFile = pb.files.getFile(film, film.image);
+            }
+            return film;
+        });
+        return data;
+    } catch (error) {
+        console.log('Une erreur est survenue en filtrant la liste des films', error);
+        return [];
+    }}
+
+
+
+
+
+ 
+    

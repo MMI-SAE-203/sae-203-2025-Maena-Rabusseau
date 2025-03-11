@@ -1,0 +1,58 @@
+---
+import { filterByGenre, sortedfilms } from "../../../backend/backend.mjs";
+import Card from "../../components/Card.astro";
+import Base from "../../layouts/Base.astro";
+const film = Astro.props;
+import Picture from "astro/components/Picture.astro";
+
+/*Filtrage d’une liste via une route dynamique permettant d’afficher uniquement les éléments correspondants, comme par exemple l’affichage des films par catégorie ou par langue.*/
+
+let message = "";
+let films = [];
+
+if (Astro.request.method === "POST") {
+    const data = await Astro.request.formData();
+    const genre = data.get("genre") as string;
+
+    if (genre) {
+        films = await filterByGenre(genre);
+
+        if (films.length === 0) {
+            message = `Aucun film trouvé pour le genre "${genre}".`;
+        } else {
+            message = `Liste des films pour le genre "${genre}"`;
+        }
+    } else {
+        message = "Veuillez sélectionner un genre.";
+    }
+} else {
+    films = await sortedfilms();
+    message = "Liste des films pour tous les genres";
+}
+---
+
+<Base>
+    <form method="POST">
+        <label for="genre">Genre :</label>
+        <select name="genre" id="genre">
+            <option value="">Sélectionnez un genre</option>
+            <option value="Enfant">Enfant</option>
+            <option value="Animation">Animation</option>
+            <option value="Documentaire">Documentaire</option>
+            <option value="Aventure">Aventure</option></select
+        >
+        <input type="submit" value="Filtrer par genre" />
+    </form>
+
+    <!-- Affichage d’une liste de collection -->
+
+    <div class="flex justify-center ">
+        Toutes les films
+        {films.map((film) => <Card {...film} />)}
+    </div>
+
+
+
+
+    <Base /></Base
+>

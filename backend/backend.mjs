@@ -132,13 +132,13 @@ export async function DeleteInvitebyId(id) {
 
 
 
-
-
-
-
-
 export async function newUser(newuser) {
     await pb.collection("users").create(newuser);
 }
+
+
+
+
+
 
 

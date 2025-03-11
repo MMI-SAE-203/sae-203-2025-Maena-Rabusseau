@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@theme{
+    --font-sand: "Quicksand";
+    --font-open: "Open Sans";
+
+    --color-bleu: oklch(33.6% 0.036 235.27); /*#243a47*/
+    --color-sable: oklch(91.37% 0.0157 86.43); /*#e7e2d7*/
+    --color-bordeau: oklch(53.9% 0.1013 24.91) ; /*#a15550*/
+    --color-marron: oklch(67.1% 0.0993 58.76); /*#c38655*/
+    --color-blanc: oklch(100% 0 0); /*#ffffff*/
+    --color-noir: oklch(0% 0 0); /*#000000*/
+}
+
+

@@ -2,6 +2,11 @@
 import { Picture } from "astro:assets";
 const film = Astro.props;
 import ImagePB from "./ImagePB.astro";
+import { Image } from "astro:assets";
+import ImgFlow from "../assets/img/flow.avif";
+import ImgKedi from "../assets/img/kedi.jpeg";
+import ImgUnevie from "../assets/img/uneviedechat.webp";
+import ImgLechat from "../assets/img/lechatpotte.webp";
 ---
 
 <!doctype html>
@@ -9,58 +14,36 @@ import ImagePB from "./ImagePB.astro";
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <!--     
-        <style>
-            .carousel-container {
-                position: relative;
-                width: 300px;
-                overflow: hidden;
-                margin: auto;
-            }
-            .carousel {
-                display: flex;
-                transition: transform 0.5s ease-in-out;
-            }
-            .carousel-item {
-                min-width: 100%;
-                max-width: 100%;
-                object-fit: cover;
-            }
-            .carousel-btn {
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-                background: rgba(0, 0, 0, 0.5);
-                color: white;
-                border: none;
-                cursor: pointer;
-                padding: 10px;
-            }
-            .prev-btn {
-                left: 10px;
-            }
-            .next-btn {
-                right: 10px;
-            }
-        </style> -->
     </head>
 
-    
     <div>
-        <button >◀</button>
-        <div >
-            {ImagePB && (
-                <Picture 
-                  pictureAttributes={{ class: classPicture }} 
-                  imgAttributes={{ class: classImg }}
-                  inferSize={true} 
-                  formats={['avif', 'webp']} 
-                  alt={alt || "Image"} 
-                  src={imageUrl} 
-                />
-              )}
-            {film.Affiche && <img class=" size-64 m-10 rounded-lg" src={film.Affiche} alt="Affiche" />}
+        <button>◀</button>
+        <div>
+            <Image
+                src={ImgFlow}
+                alt="Logo"
+                class="h-16 w-16 lg:h-16 lg:w-16"
+                loading="lazy"
+            />
+            <Image
+                src={ImgKedi}
+                alt="Logo"
+                class="h-16 w-16 lg:h-16 lg:w-16"
+                loading="lazy"
+            />
+            <Image
+                src={ImgUnevie}
+                alt="Logo"
+                class="h-16 w-16 lg:h-16 lg:w-16"
+                loading="lazy"
+            />
+            <Image
+                src={ImgLechat}
+                alt="Logo"
+                class="h-16 w-16 lg:h-16 lg:w-16"
+                loading="lazy"
+            />
         </div>
-        <button class=" next-btn">▶</button>
+        <button class="next-btn">▶</button>
     </div>
-    
+</html>

@@ -1,6 +1,182 @@
 ---
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Layout from "../layouts/Layout.astro";
+import Button from "../components/Button.astro";
+import { Image } from "astro:assets";
+import imgcinemapontarlier from "../assets/img/imgcinemapontarlier.avif";
+import imgrideaucinema from "../assets/img/imgrideaucinema.avif";
+import imagedansunparc from "../assets/img/imagedansunparc.avif";
+import imghotel from "../assets/img/imghotel.avif";
+import imagehotelkyriad from "../assets/img/imagehotelkyriad.avif";
 ---
-<Header></Header>
-<Footer></Footer>
+
+<Layout>
+    <main>
+        <div>
+            <h2 class="text-left p-5">Où ?</h2>
+            <p class="ml-5">
+                Pontarlier <br />
+                Le lieu exact du festival le cinéma Olympia
+            </p>
+
+            <Image
+                src={imgcinemapontarlier}
+                alt="Image du cinéma de Pontarlier"
+                class="w-90 m-10 rounded-lg"
+                loading="lazy"
+            />
+            <Image
+                src={imgrideaucinema}
+                alt="Image d'un cinéma avec des rideaux fermé"
+                class="w-90 m-10 rounded-lg"
+                loading="lazy"
+            />
+            <h2 class="text-left p-5">Quand ?</h2>
+            <p class="ml-5">Du 27 au 29 juin 2025</p>
+            <h2 class="text-left p-5">Qui ?</h2>
+            <p class="ml-5">
+                Le festival accueille tout le monde : familles, personnes
+                défendant la cause animale, jeunes. Toute personne intéressée
+                par le cinéma et amoureuse des chats. Mais aussi des
+                associations et des entreprises animalières.
+            </p>
+
+            <Image
+                src={imagedansunparc}
+                alt="Image d'un parc"
+                class="w-90 m-10 rounded-lg"
+                loading="lazy"
+            />
+            <h2 class="text-left p-5">Pourquoi ?</h2>
+            <p class="ml-5">
+                Le festival va vous plonger dans un festival de cinéma où
+                l'univers des chats se mêle à la magie des films ! Dans une
+                ambiance conviviale et pleine de bonne humeur, partagez des
+                moments uniques avec d'autres passionnés et profitez d'une
+                expérience cinéphile originale et chaleureuse.
+            </p>
+
+            <Image
+                src={imghotel}
+                alt="Image d'un parc"
+                class="w-90 m-10 rounded-lg"
+                loading="lazy"
+            />
+        </div>
+        <hr class="py-2 bg-[var(--color-bleu)]" />
+        <div>
+            <h2 class="text-center p-5">Billetterie</h2>
+            <p class="text-center p-5"><strong>Tarifs individuels :</strong></p>
+            <ul class="ml-5 m-5 text-center">
+                <li>Pass journée 10€</li>
+                <li>Pass 3 jours 25€</li>
+            </ul>
+            <div class="flex justify-center">
+                <Button text="Acheter" />
+            </div>
+            <p class="text-center p-5">
+                <strong>Tarifs réduits (Étudiants) :</strong>
+            </p>
+            <ul class="ml-5 m-5 text-center">
+                <li>Pass journée 7€</li>
+                <li>Pass 3 jours 18€</li>
+            </ul>
+            <div class="flex justify-center">
+                <Button text="Acheter" />
+            </div>
+            <p class="text-center p-5"><strong>Offres spéciales :</strong></p>
+            <ul class="ml-5 m-5 text-center">
+                <li>Pass famille (2 adultes + 2 enfants) : 25 €</li>
+            </ul>
+            <div class="flex justify-center m-5">
+                <Button text="Acheter" />
+            </div>
+        </div>
+        <hr class="py-2 bg-[var(--color-bleu)]" />
+        <div>
+            <div>
+                <h2 class="text-center p-5">Infos pratiques</h2>
+                <p class="text-center p-5">
+                    Une fois votre achat effectué, vous recevrez vos billets par
+                    email. Imprimez-les ou présentez-les directement sur votre
+                    téléphone à l’entrée. Les billets ne sont ni échangeables ni
+                    remboursables, sauf en cas d'annulation du festival. Pour
+                    toute question, veuillez nous contacter à
+                    miaullywood@agglo-pontarlier.fr.
+                </p>
+            </div>
+            <hr class="py-2 bg-[var(--color-bleu)]" />
+            <div>
+                <h2 class="text-center p-5">Hébergement</h2>
+                <p class="text-center p-5">
+                    Si vous souhaitez passer la nuit pendant le festival, il
+                    existe plusieurs hôtels à proximité qui offrent un
+                    hébergement confortable à quelques minutes du lieu de
+                    l'événement.
+                </p>
+                <ul class="ml-5 m-5 justify-center text-center">
+                    <li>Kyriad Pontarlier</li>
+                    <li>ibis Pontarlier</li>
+                    <li>Campanile Pontarlier</li>
+                    <li>HotelF1 Pontarlier</li>
+                </ul>
+
+                <Image
+                    src={imagehotelkyriad}
+                    alt="Image d'un parc"
+                    class="w-90 m-10 rounded-lg"
+                    loading="lazy"
+                />
+            </div>
+            <hr class="py-2 bg-[var(--color-bleu)]" />
+            <div>
+                <h2 class="text-center p-5">FAQ</h2>
+                <p class="text-center p-5">
+                    <strong>Puis-je acheter des billets sur place ?</strong>
+                </p>
+                <p class="text-center p-5">
+                    Oui, les billets seront disponibles à l'entrée du festival,
+                    dans la limite des places disponibles.
+                </p>
+                <p class="text-center p-5">
+                    <strong>Les enfants doivent-ils payer un billet ?</strong>
+                </p>
+                <p class="text-center p-5">
+                    Oui, les enfants de plus de 12 ans doivent acheter un
+                    billet. Les enfants de moins de 12 ans bénéficient d'un
+                    tarif réduit.
+                </p>
+            </div>
+            <hr class="py-2 bg-[var(--color-bleu)]" />
+            <div>
+                <h2 class="text-center p-5">Transport</h2>
+                <p class="text-center p-5">
+                    Pour accéder facilement au festival, plusieurs options de
+                    transport sont disponibles :
+                </p>
+                <ul class="ml-5 p-5">
+                    <li class="m-5">
+                        <strong>En train :</strong> Pontarlier est bien desservi
+                        par la gare SNCF, avec des liaisons régulières depuis des
+                        grandes villes comme Besançon et Lausanne. Des navettes ou
+                        taxis sont également disponibles pour rejoindre le lieu du
+                        festival depuis la gare.
+                    </li>
+                    <li class="m-5">
+                        <strong>Covoiturage :</strong> Nous encourageons le covoiturage
+                        pour une solution pratique et écologique. Des plateformes
+                        de covoiturage comme BlaBlaCar facilitent la mise en relation
+                        entre les participants.
+                    </li>
+                    <li class="m-5">
+                        <strong>Parkings : </strong> Plusieurs parkings sont situés
+                        près du festival pour les personnes venant en voiture. Des
+                        places de stationnement seront également réservées pour les
+                        personnes en situation de handicap.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </main></Layout
+>

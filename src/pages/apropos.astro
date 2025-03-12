@@ -1,6 +1,10 @@
 ---
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import imgcinemavide from "../assets/img/imgcinemavide.avif";
+import imgequipe from "../assets/img/imgequipe.avif";
 ---
 
 <!doctype html>
@@ -12,95 +16,102 @@ import Footer from "../components/Footer.astro";
         <link rel="stylesheet" href="/src/css/style.css" />
         <script type="module" src="/src/js/script.js"></script>
     </head>
-
-    <Header />
-    <div>
-        <h3>À propos</h3>
-        <p>
-            Le Festival Miaullywood est un festival unique en son genre,
-            mélangeant le cinéma avec une ambiance câline, inspiré des chats. Un
-            concept innovant, permettant de sensibiliser le public sur la
-            maltraitance animale tout en explorant les présentations de films de
-            réalisateurs émergents.De plus, ce festival intègrera les dernières
-            tendances technologiques, dont la réalité virtuelle permettant de
-            profiter du festival à la maison.
-        </p>
-        <img
-            src="assets/Images/medias/imagecinémarideau.avif"
-            alt="Image d'un cinéma "
-        />
-    </div>
-    <hr />
-    <div>
-        <h2>Historique</h2>
-        <p>
-            Le Festival des Chats et du Cinéma est né en 2024 à Belfort, avec
-            l’ambition de réunir deux passions universelles : le cinéma et les
-            chats. Ce festival unique met à l’honneur des œuvres originales,
-            tout en intégrant des valeurs d’innovation, d’accessibilité et de
-            diversité. À travers une programmation variée – courts-métrages,
-            animations, ateliers – il vise à sensibiliser le public à la
-            richesse du cinéma, tout en offrant une expérience conviviale et
-            immersive, accessible à tous.
-        </p>
-    </div>
-    <hr />
-    <div>
-        <h2>Équipe</h2>
-        <p>Le festival repose sur une équipe dynamique et passionnée :</p>
-        <ul>
-            <li>
-                Organisateurs : Un collectif de jeunes cinéphiles et
-                professionnels de l’événementiel, dirigé par une équipe créative
-                spécialisée dans les arts visuels, la programmation et la
-                logistique.
-            </li>
-            <li>
-                Équipe technique : Des techniciens de projection, graphistes,
-                responsables de la communication et du son, travaillant ensemble
-                pour offrir une expérience immersive et fluide.
-
-                <li>
-                    Bénévoles : Des passionnés mobilisés pour accueillir le
-                    public, guider les visiteurs et assurer le bon déroulement
-                    des activités.
-                </li>
-            </li>
-            <img
-                src="assets/Images/medias/imagecinémaavec7personnes.avif"
-                alt="Image d'un cinéma"
-            />
-        </ul>
-        <hr />
+    <Layout>
         <div>
-            <h2>Charte</h2>
-            <p>
-                Le festival s’articule autour de trois valeurs fondamentales :
+            <h2 class="text-center p-5">À propos</h2>
+            <p class="ml-5">
+                Le Festival Miaullywood est un festival unique en son genre,
+                mélangeant le cinéma avec une ambiance câline, inspiré des
+                chats. Un concept innovant, permettant de sensibiliser le public
+                sur la maltraitance animale tout en explorant les présentations
+                de films de réalisateurs émergents.De plus, ce festival
+                intègrera les dernières tendances technologiques, dont la
+                réalité virtuelle permettant de profiter du festival à la
+                maison.
             </p>
-            <ul>
-                <li>
-                    Créativité : Mettre en avant des courts-métrages, animations
-                    et documentaires innovants, explorant des récits originaux
-                    autour des chats et du cinéma, avec une approche artistique
-                    et immersive.
-                </li>
-                <li>
-                    Accessibilité : Proposer une programmation adaptée à tous
-                    les publics – cinéphiles, familles, curieux – grâce à des
-                    séances inclusives, des tarifs abordables et des espaces
-                    conviviaux.
-                </li>
-                <li>
-                    Engagement : Soutenir un cinéma éthique et responsable, en
-                    collaborant avec des réalisateurs engagés et des
-                    organisations promouvant l’inclusion, la diversité et le
-                    bien-être animal.
-                </li>
-            </ul>
+
+            <Image
+                src={imgcinemavide}
+                alt="Image cinéma vide"
+                class="w-90 m-10 rounded-lg justify-center items-center"
+                loading="lazy"
+            />
         </div>
+        <hr class="py-2 bg-[var(--color-bordeau)]" />
+        <div>
+            <h2 class="text-center p-5">Historique</h2>
+            <p class="ml-5">
+                Le Festival des Chats et du Cinéma est né en 2024 à Belfort,
+                avec l’ambition de réunir deux passions universelles : le cinéma
+                et les chats. Ce festival unique met à l’honneur des œuvres
+                originales, tout en intégrant des valeurs d’innovation,
+                d’accessibilité et de diversité. À travers une programmation
+                variée – courts-métrages, animations, ateliers – il vise à
+                sensibiliser le public à la richesse du cinéma, tout en offrant
+                une expérience conviviale et immersive, accessible à tous.
+            </p>
+        </div>
+        <hr class="py-2 bg-[var(--color-bordeau)]" />
+        <div>
+            <h2 class="text-center p-5">Équipe</h2>
+            <p class="ml-5">
+                Le festival repose sur une équipe dynamique et passionnée :
+            </p>
+            <ul class="ml-5 m-5">
+                <li class="m-5">
+                    - Organisateurs : Un collectif de jeunes cinéphiles et
+                    professionnels de l’événementiel, dirigé par une équipe
+                    créative spécialisée dans les arts visuels, la programmation
+                    et la logistique.
+                </li>
+                <li class="m-5">
+                    - Équipe technique : Des techniciens de projection,
+                    graphistes, responsables de la communication et du son,
+                    travaillant ensemble pour offrir une expérience immersive et
+                    fluide.
 
-        <Footer />
-    </div>
+                    <li class="m-5">
+                        - Bénévoles : Des passionnés mobilisés pour accueillir
+                        le public, guider les visiteurs et assurer le bon
+                        déroulement des activités.
+                    </li>
+                </li>
 
-
+                <Image
+                    src={imgequipe}
+                    alt="Image de l'équipe"
+                    class="w-90 m-10 rounded-lg justify-center items-center"
+                    loading="lazy"
+                />
+            </ul>
+            <hr class="py-2 bg-[var(--color-bordeau)]" />
+            <div>
+                <h2 class="text-center p-5">Charte</h2>
+                <p class="ml-5">
+                    Le festival s’articule autour de trois valeurs fondamentales
+                    :
+                </p>
+                <ul class="ml-5 p-5">
+                    <li class="p-5">
+                        - Créativité : Mettre en avant des courts-métrages,
+                        animations et documentaires innovants, explorant des
+                        récits originaux autour des chats et du cinéma, avec une
+                        approche artistique et immersive.
+                    </li>
+                    <li class="p-5">
+                        - Accessibilité : Proposer une programmation adaptée à
+                        tous les publics – cinéphiles, familles, curieux – grâce
+                        à des séances inclusives, des tarifs abordables et des
+                        espaces conviviaux.
+                    </li>
+                    <li class="p-5">
+                        - Engagement : Soutenir un cinéma éthique et
+                        responsable, en collaborant avec des réalisateurs
+                        engagés et des organisations promouvant l’inclusion, la
+                        diversité et le bien-être animal.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </Layout>
 </html>

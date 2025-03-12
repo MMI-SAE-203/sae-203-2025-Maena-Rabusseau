@@ -20,9 +20,6 @@
 
     --my-grid: repeat(12, minmax(0, 64px));
 
-}
-
-:root {
     --heading1: 40px;
     --heading2: 32px;
     --body1: 20px;
@@ -31,12 +28,25 @@
     --small: 13px
 }
 
-/* 
+
 @layer base {
-    body{
-        @apply 
+    body {
+        @apply text-(length:--body1)
     }
-} */
+
+    h1 {
+        @apply text-(length:--heading1)  lg:text-4xl
+    }
+
+    h2 {
+        @apply text-(length:--heading2) lg:text-2xl
+    }
+
+    h3 {
+        @apply text-(length:--heading3)
+    }
+
+}
 
 
 @layer components {

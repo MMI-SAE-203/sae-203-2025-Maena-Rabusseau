@@ -1,12 +1,26 @@
 ---
 const { href, text } = Astro.props;
+
+const {
+    variant = "default",
+    size = "medium",
+    url = "#",
+    texte = "",
+} = Astro.props;
+
+const sizeClass = {
+    small: "px-4 py-2.5 text-sm",
+    medium: "px-6 py-3 text-base",
+    large: "px-8 py-4 text-base",
+};
 ---
 
-<a class="inline-flex items-center gap-4 px-6 py-4 text-body2 tracking-wide 
-          lg:px-8 lg:py-6 lg:text-body1 rounded-full bg-[var(--color-marron)] text-white "
-href={href}>
-
-{text}
-
-
+<a
+    href={href}
+    class={`  inline-flex items-center gap-2 px-2 py-2 text-body2 tracking-wide 
+          lg:px-8 lg:py-6 lg:text-body1 rounded-full bg-[var(--color-marron)] text-white  text-center  ${sizeClass[size]}`}
+    "
+    href={href}
+>
+    {text}
 </a>

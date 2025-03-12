@@ -1,67 +1,85 @@
 ---
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import Facebook from '../assets/icones/icon_facebook.svg'
-import Instagram from '../assets/icons/IconInstagram.svg'
-import Twitter from '../assets/icons/IconTwitter.svg'
-
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import IconFacebook from "../assets/icones/icon_facebook.svg";
+import IconInstagram from "../assets/icones/icon_instagram.svg";
+import IconTwitter from "../assets/icones/icon_twitter.svg";
+import IconYoutube from "../assets/icones/icon_youtube.svg";
+import Layout from "../layouts/Layout.astro";
+import Button from "../components/Button.astro";
 ---
-<Header/>
-<div >
-    <p>Prénom </p>
-    <svg  xmlns="http://www.w3.org/2000/svg" width="400" height="100"
-        viewBox="0 0 400 100">
-        <rect  width="400" height="50" rx="20" ry="2" fill="white " />
-    </svg>
-    <p>nom</p>
-    <svg  xmlns="http://www.w3.org/2000/svg" width="400" height="100"
-        viewBox="0 0 400 100">
-        <rect  width="400" height="50" rx="20" ry="2" fill="white " />
-    </svg>
-    <p>e-mail</p>
-    <svg  xmlns="http://www.w3.org/2000/svg" width="400" height="100"
-        viewBox="0 0 400 100">
-        <rect  width="400" height="50" rx="20" ry="2" fill="white  " />
-    </svg>
-    <p>Numéro de téléphone</p>
-    <svg  xmlns="http://www.w3.org/2000/svg" width="400" height="100"
-        viewBox="0 0 400 100">
-        <rect class="contact__boite" width="400" height="50" rx="20" ry="2" fill="white " />
-    </svg>
-    <p>Adresse postale</p>
-    <svg  xmlns="http://www.w3.org/2000/svg" width="400" height="100"
-        viewBox="0 0 400 100">
-        <rect  width="400" height="50" rx="20" ry="2" fill="white" />
-    </svg>
-    <p>Votre demande</p>
-    <svg  xmlns="http://www.w3.org/2000/svg" width="400" height="100"
-        viewBox="0 0 400 100">
-        <rect class= width="400" height="100" rx="20" ry="2" fill="white" />
-    </svg>
-    <button aria-label="Envoyer ma demande ">Envoyer </button>
-    <h3 >Contact
 
-        2 Rue Louis Pergaud, 25300 Pontarlier
+<Layout>
+    <main>
+        <div class="space-y-4 p-4 max-w-lg mx-auto">
+            <label class="block">
+                <span class="">Prénom</span>
+                <input
+                    type="text"
+                    class="mt-1 block w-full rounded-lg border border-black-300 p-2"
+                    placeholder="Votre prénom"
+                />
+            </label>
 
-        03 84 54 27 27
+            <label class="block">
+                <span class="">Nom</span>
+                <input
+                    type="text"
+                    class="mt-1 block w-full rounded-lg border border-black-300 p-2"
+                    placeholder="Votre nom"
+                />
+            </label>
 
-        miaullywood@agglo-pontarlier.fr</h3>
+            <label class="block">
+                <span class="">E-mail</span>
+                <input
+                    type="email"
+                    class="mt-1 block w-full rounded-lg border border-black-300 p-2"
+                    placeholder="Votre e-mail"
+                />
+            </label>
 
+            <label class="block">
+                <span class="">Numéro de téléphone</span>
+                <input
+                    type="tel"
+                    class="mt-1 block w-full rounded-lg border border-black-300 p-2"
+                    placeholder="Votre numéro de téléphone"
+                />
+            </label>
 
-</div>
+            <label class="block">
+                <span class="">Adresse postale</span>
+                <input
+                    type="text"
+                    class="mt-1 block w-full rounded-lg border border-black-300 p-2"
+                    placeholder="Votre adresse"
+                />
+            </label>
 
-<div >
-    <li>
-        <a href="https://facebook.com" aria-label="Facebook"><Facebook /></a>
-      </li>
-      <li>
-        <a href="https://instagram.com" aria-label="Instagram"><Instagram /></a>
-      </li>
-      <li>
-        <a href="https://twitter.com" aria-label="Twitter"><Twitter /></a>
-      </li>
-</div>
-</main>
+            <label class="block">
+                <span class="">Votre demande</span>
+                <textarea
+                    class="mt-1 block w-full rounded-lg border border-black-300 p-2"
+                    rows="4"
+                    placeholder="Votre message"></textarea>
+            </label>
+        </div>
+        <div class="flex justify-center m-5">
+            <Button text="Envoyer" />
+        </div>
+        <hr class="py-2 bg-[var(--color-bleu)]" />
+        <h2 class="text-center p-5">Contact :</h2>
+        <ul class="ml-5 m-5 text-center">
+            <li class="ml-5 pb-2 lg:items-center">
+                2 Rue Louis Pergaud, 25300 Pontarlier
+            </li>
 
+            <li class="ml-5 pb-2 lg:items-center">03 84 54 27 27</li>
 
-<Footer/>
+            <li class="ml-5 pb-2 lg:items-center">
+                miaullywood@agglo-pontarlier.fr
+            </li>
+        </ul>
+    </main>
+</Layout>

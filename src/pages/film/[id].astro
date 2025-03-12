@@ -20,41 +20,46 @@ if (!film) {
 ---
 
 <Layout titre={film.Titre}>
-    <ul class="m-8 p-4 border-2 border-gray-300 rounded-lg bg-white shadow-md">
-        <li class="p-4">
-            <p class="p-4">Synopsis :</p>
-            <span>{film.Description}</span>
-        </li>
+    <div>
+        <ul
+            class="m-8 p-4 border-2 border-gray-300 rounded-lg bg-white shadow-md"
+        >
+            <li class="p-4 bg-[var(--color-sable)]">
+                <p class="p-4">Synopsis :</p>
+                <span>{film.Description}</span>
+            </li>
 
-        <li class="p-4">
-            <p class="p-4">Bande annonce :</p>
-            <span class="ml-19">{film.Bande_annonce}</span>
-        </li>
+            <li class="p-4 bg-[var(--color-sable)]">
+                <p class="p-4">Bande annonce :</p>
+                <span class="ml-19">{film.Bande_annonce}</span>
+            </li>
 
-        <li class="p-4">
-            <p class="p-4">Durée :</p>
-            <span class="ml-19">{film.Duree}</span>
-        </li>
+            <li class="p-4 bg-[var(--color-sable)]">
+                <p class="p-4">Durée :</p>
+                <span class="ml-19">{film.Duree}</span>
+            </li>
 
-        <li class="p-4">
-            <p class="p-4">Langue :</p>
-            <span class="ml-19">{film.Langue}</span>
-        </li>
+            <li class="p-4 bg-[var(--color-sable)]">
+                <p class="p-4">Langue :</p>
+                <span class="ml-19">{film.Langue}</span>
+            </li>
 
-        <li class="p-4">
-            <p class="p-4">Pays de production :</p>
-            <span class="ml-19">{film.Production}</span>
-        </li>
-        <!-- <p>Invités : </p>  <li>  {film.Invites}</li> -->
-        <!-- {invite.expand?.Films_via_Invites.map((i) => <Card {...i}/>)} -->
+            <li class="p-4 bg-[var(--color-sable)]">
+                <p class="p-4">Pays de production :</p>
+                <span class="ml-19">{film.Production}</span>
+            </li>
+            <!-- <p>Invités : </p>  <li>  {film.Invites}</li> -->
+            <!-- {invite.expand?.Films_via_Invites.map((i) => <Card {...i}/>)} -->
 
-        <li class="p-4">
-            <p class="p-4">Genre :</p><span class="ml-19">{film.Genre}</span>
-        </li>
-        <li class="p-4">
-            <p class="p-4">Liste des acteurs :</p><span class="ml-19"
-                >{film.Liste_des_acteurs}</span
-            >
-        </li>
-    </ul>
+            <li class="p-4 bg-[var(--color-sable)]">
+                <p class="p-4">Genre :</p><span class="ml-19">{film.Genre}</span
+                >
+            </li>
+            <li class="p-4">
+                <p class="p-4">Liste des acteurs :</p><span class="ml-19"
+                    >{film.Liste_des_acteurs}</span
+                >
+            </li>
+        </ul>
+    </div>
 </Layout>

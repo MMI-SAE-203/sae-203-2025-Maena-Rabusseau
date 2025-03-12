@@ -2,6 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 
 import { addfilm } from '../../../backend/backend.mjs';
+import Button from "../../components/Button.astro";
 
 
 let message = "";
@@ -14,8 +15,8 @@ if (Astro.request.method === "POST") {
 //Création des formulaires pour saisir et modifier des données.
 ---
 
-<Base>
-<h1 class="text-lg">Ajouter un film </h1>
+<Layout>
+<h1 >Ajouter un film </h1>
 {message && <p class="text-red-600">{}</p>}
 <form action="/film/add" method="POST" enctype="multipart/form-data">
     <input
@@ -25,10 +26,10 @@ if (Astro.request.method === "POST") {
         required
         class="w-full mt-2 p-2 border border-gray-300 rounded-md"
     />
-  <input 
+  <input
   type="text"
   name="Description"
-  placeholder="Description du film"
+  placeholder ="Description du film"
   />
   <input 
   type="text"
@@ -38,11 +39,12 @@ if (Astro.request.method === "POST") {
  
   <input 
   type="text"
-  name="Liste_des_acteurs"
+  name ="Liste_des_acteurs"
   placeholder="Liste des acteurs"
   />
     <input type="file" name="images" />
-    <button type="submit">Ajouter</button>
+
+    <button class="" type="submit">Ajouter</button>
 </form> 
 
-</Base>
+</Layout>

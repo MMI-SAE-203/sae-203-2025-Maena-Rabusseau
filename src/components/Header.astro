@@ -1,100 +1,77 @@
 ---
-import IconLogo from "../assets/icones/logo.png";
+import IconLogo from "../assets/icones/logosite.png";
+
+import { Image } from "astro:assets";
 const currentPath = Astro.url.pathname;
 import Button from "./Button.astro";
 ---
-<!-- 
+
 <header
-  class="px-6 py-4  z-10 w-full flex items-stretch justify-between transition-all duration-300 ease-in-out bg-[var(--color-bordeau)]"
-  id="header"
+  class="flex items-center justify-between px-4 gap-8 border-b-2 bg-[var(--color-bordeau)] h-20"
 >
-   <div class="flex items-center relative z-20"> -->
-    <a href="/" aria-label="Accueil">
-      <!-- <IconLogo/> 
-    </a>
-  </div>
+  <a href="/">
+    <Image
+      src={IconLogo}
+      alt="Logo"
+      class="h-16 w-16 lg:h-16 lg:w-16"
+      loading="lazy"
+    />
+    <p class="">Miaullywood</p>
+  </a>
+  <button
+    id="menu-btn"
+    class="group relative z-10 flex h-3 w-6 flex-col justify-between lg:hidden *:block *:ease *:h-0.5 *:w-full *:transform *:rounded-full *:bg-white *:transition *:duration-300"
+    aria-label="Menu"
+    aria-controls="menu"
+    aria-expanded="false"
+  >
+    <span
+      class="group-aria-expanded:translate-y-[5px] group-aria-expanded:rotate-45"
+    ></span>
+    <span
+      class="group-aria-expanded:-translate-y-[5px] group-aria-expanded:-rotate-45"
+    ></span>
+  </button>
+  <nav
+    id="menu"
+    class="flex-1 px-6 py-12 flex justify-between mt-20 flex-col fixed z-10 inset-0 bg-[var(--color-bordeau)] visible opacity-100 max-lg:aria-hidden:invisible max-lg:aria-hidden:opacity-0 lg:mt-0 lg:flex-row lg:static lg:bg-transparent lg:py-6 lg:visible lg:opacity-100"
+    aria-hidden="true"
+  >
+    <ul class="flex flex-col gap-4 lg:flex-row">
+      <li>
+        <a
+          class={`block p-4 rounded-lg justify-center items-center text-white ${currentPath === "/properties" ? " font-bold max-lg:bg-indigo-100 max-lg:rounded-lg" : ""}`}
+          href="/">Accueil</a
+        >
+      </li>
+      <li>
+        <a class="block p-4 rounded-lg py-4 text-white" href="/programme"
+          >Programme</a
+        >
+      </li>
+      <li>
+        <a class="block p-4 rounded-lgpy-4 text-white" href="/invites"
+          >Nos Invités</a
+        >
+      </li>
+      <li>
+        <a class="block p-4 rounded-lg py-4 text-white" href="/apropos"
+          >À propos</a
+        >
+      </li>
+      <li>
+        <a class="block p-4 rounded-lg py-4 text-white" href="/info"
+          >Info Pratiques</a
+        >
+      </li>
 
-  <div>
-    <button
-      class="group relative z-10 flex h-3 w-6 flex-col justify-between lg:hidden *:block *:ease *:h-0.5 *:w-full *:transform *:rounded-full *:bg-white *:transition *:duration-300"
-      id="menu-btn"
-      aria-label="Menu"
-      aria-controls="menu"
-      aria-expanded="false"
-    >
-      <span
-        class="group-aria-expanded:translate-y-[10.5px] group-aria-expanded:rotate-45"
-      ></span>
-      <span class="group-aria-expanded:opacity-0"></span> 
-      <span
-        class="group-aria-expanded:-translate-y-[10.5px] group-aria-expanded:-rotate-45"
-      ></span>
-    </button>
-
-    <nav
-      class="flex-1 px-6 py-12 flex justify-between mt-20 flex-col fixed z-10 inset-0 bg-indigo-50 visible opacity-100 max-lg:aria-hidden:invisible max-lg:aria-hidden:opacity-0 lg:mt-0 lg:flex-row lg:static lg:bg-transparent lg:py-6 lg:visible lg:opacity-100"
-      id="menu"
-      aria-hidden="true"
-    >
-      <ul class="mt-[25vh] mx-16">
-        <li> -->
-
-        <header class="flex items-center justify-between px-4 gap-8 border-b-2 bg-[var(--color-bordeau)] h-20">
-          <a href="/">
-          <!-- <IconLogo/>  -->
-          </a>
-          <button
-            id="menu-btn"
-            class="group relative z-10 flex h-3 w-6 flex-col justify-between lg:hidden *:block *:ease *:h-0.5 *:w-full *:transform *:rounded-full *:bg-white *:transition *:duration-300"
-            aria-label="Menu"
-            aria-controls="menu"
-            aria-expanded="false"
-          >
-            <span class="group-aria-expanded:translate-y-[5px] group-aria-expanded:rotate-45"></span>
-            <span class="group-aria-expanded:-translate-y-[5px] group-aria-expanded:-rotate-45"></span>
-          </button>
-          <nav
-            id="menu"
-            class="flex-1 px-6 py-12 flex justify-between mt-20 flex-col fixed z-10 inset-0 bg-[var(--color-bordeau)] visible opacity-100 max-lg:aria-hidden:invisible max-lg:aria-hidden:opacity-0 lg:mt-0 lg:flex-row lg:static lg:bg-transparent lg:py-6 lg:visible lg:opacity-100"
-            aria-hidden="true"
-          >
-            <ul class="flex flex-col gap-4 lg:flex-row">
-              <li>
-                <a class={`block p-4 rounded-lg text-white ${currentPath === '/properties' ? 'text-indigo-600 font-bold max-lg:bg-indigo-100 max-lg:rounded-lg' : ''}`} 
-                href="/">Accueil</a>
-              </li>
-
-
-
-
-          
-
-        <li>
-          <a class="block p-4 rounded-lg py-4 text-white" href="/programme">Programme</a>
-        </li>
-        <li>
-          <a class="block p-4 rounded-lgpy-4 text-white" href="/invites">Nos Invités</a>
-        </li>
-        <li>
-          <a class="block p-4 rounded-lg py-4 text-white" href="/apropos">À propos</a>
-        </li>
-        <li>
-          <a class="block p-4 rounded-lg py-4 text-white" href="/info">Info Pratiques</a>
-        </li>
-
-        <li>
-          <a class="block p-4 rounded-lg py-4 text-white" href="/contact"> Contact </a>
-        </li>
-      </ul>
-    </nav>
-  </div>
-
-<!-- 
-<div class="flex items-center justify-center gap-4 px-4">
-  <Button variant="outlined" url="/login" text="Login" />
-  <Button variant="dark" url="/signup" text="Sign Up" /> -->
-</div>
-</nav> 
+      <li>
+        <a class="block p-4 rounded-lg py-4 text-white" href="/contact">
+          Contact
+        </a>
+      </li>
+    </ul>
+  </nav>
 </header>
 
 <script>

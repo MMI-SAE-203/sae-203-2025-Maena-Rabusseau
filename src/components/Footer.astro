@@ -1,57 +1,60 @@
-<!-- ---
-import IconFacebook from '../assets/icones/icon_facebook.svg';
-import IconInstagram from '../assets/icones/icon_instagram.svg';
-import IconTwitter from '../assets/icones/icon_twitter.svg';
-import IconYoutube from '../assets/icones/icon_youtube.svg';
-import IconLogo from '../assets/icones/logo.png';
-
-
+---
+import IconFacebook from "../assets/icones/icon_facebook.svg";
+import IconInstagram from "../assets/icones/icon_instagram.svg";
+import IconTwitter from "../assets/icones/icon_twitter.svg";
+import IconYoutube from "../assets/icones/icon_youtube.svg";
+import IconLogo from "../assets/icones/logo.png";
 ---
 
+<nav
+  class="px-5 columns-2 gap-8 space-y-8 text-sm lg:text-base lg:columns-3 lg:col-span-3 lg:px-0 *:break-inside-avoid *:space-y-3 bg-[var(--color-marron)]"
+>
+  <div>
+    <ul>
+      <li><a class="text-white uppercase" href="/programme">Programme</a></li>
+    </ul>
+  </div>
+  <div>
+    <ul>
+      <li><a class="text-white uppercase" href="/contact">Contact </a></li>
+    </ul>
+  </div>
 
-<footer class="grille space-y-6  bg-color-marron py-16 px-6 text-white">
-    <a class="block" href="/" aria-label="Accueil">
-  <IconLogo  />
-    </a>
-    
-    <nav class="space-y-3">
-      <h3>Menu</h3>
-      <ul>
-        <li><a href="/billetterie">Billetterie"</a></li>
-        <li><a href="/contact">Contact </a></li>
-        <li><a href="/apropos">À propos </a></li>
-      </ul>
-    </nav>
-  
-  
-   
-  
-    <div>
-      <h3>Nous suivre</h3>
-      <ul  class="flex gap-4">
-        <li>
-            <a href="https://youtube.com" aria-label="youtube">
-              <IconYoutube class="fill-white"/>
-            </a>
-          </li>
-          <li>
-            <a href="https://twitter.com" aria-label="twitter">
-              <IconTwitter class="fill-white"/>
-            </a>
-          </li>
-          <li>
-            <a href="https://instagram.com" aria-label="instagram">
-              <IconInstagram class="fill-white"/>
-            </a>
-          </li>
-        
-        <li>
-          <a href="https://facebook.com" aria-label="facebook">
-            <IconFacebook class="fill-white"/>
-          </a>
-        </li>
-     
-      
-      </ul>
-    </div>
-  </footer> -->
+  <div>
+    <ul>
+      <li><a class="text-white uppercase" href="/apropos">À propos </a></li>
+    </ul>
+  </div>
+  <div>
+    <ul>
+      <li><a class="text-white uppercase" href="/contact">Nous suivre</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div
+  class="px-5 py-8 space-y-6 text-center lg:col-span-4 lg:flex lg:justify-around lg:items-center lg:space-y-0 bg-[var(--color-marron)]"
+>
+  <ul class="flex gap-12 justify-center">
+    <li>
+      <a href="https://www.youtube.com" aria-label="Youtube"
+        ><IconYoutube class="fill-white" /></a
+      >
+    </li>
+    <li>
+      <a href="https://twitter.com" aria-label="Twitter"
+        ><IconTwitter class="fill-white" /></a
+      >
+    </li>
+    <li>
+      <a href="https://instagram.com" aria-label="Instagram"
+        ><IconInstagram class="fill-white" /></a
+      >
+    </li>
+    <li>
+      <a href="https://facebook.com" aria-label="Facebook"
+        ><IconFacebook class="fill-white" /></a
+      >
+    </li>
+  </ul>
+</div>

@@ -1,51 +1,50 @@
 @import "tailwindcss";
 
 
-@theme{
+@theme {
     --font-sand: "Quicksand";
     --font-open: "Open Sans";
 
-    --color-bleu: oklch(33.6% 0.036 235.27); /*#243a47*/
-    --color-sable: oklch(91.37% 0.0157 86.43); /*#e7e2d7*/
-    --color-bordeau: oklch(53.9% 0.1013 24.91) ; /*#a15550*/
-    --color-marron: oklch(67.1% 0.0993 58.76); /*#c38655*/
-    --color-blanc: oklch(100% 0 0); /*#ffffff*/
-    --color-noir: oklch(0% 0 0); /*#000000*/
+    --color-bleu: oklch(33.6% 0.036 235.27);
+    /*#243a47*/
+    --color-sable: oklch(91.37% 0.0157 86.43);
+    /*#e7e2d7*/
+    --color-bordeau: oklch(53.9% 0.1013 24.91);
+    /*#a15550*/
+    --color-marron: oklch(67.1% 0.0993 58.76);
+    /*#c38655*/
+    --color-blanc: oklch(100% 0 0);
+    /*#ffffff*/
+    --color-noir: oklch(0% 0 0);
+    /*#000000*/
 
     --my-grid: repeat(12, minmax(0, 64px));
 
 }
+
 :root {
-  --heading1: 40px;
-  --heading2: 32px;
-  --body1: 20px;
-  --heading3: 16px;
-  --body2: 15px;
-  --small: 13px
+    --heading1: 40px;
+    --heading2: 32px;
+    --body1: 20px;
+    --heading3: 16px;
+    --body2: 15px;
+    --small: 13px
 }
 
-
+/* 
 @layer base {
-    body {
-      @apply font-open body1 regular;
+    body{
+        @apply 
     }
-    h1 {
-      @apply --heading1 font-sand medium ;
-    }
-    h2 {
-      @apply --heading2 font-sand medium;
-    }
-    h3 {
-      @apply --heading3 font-sand regular;
-    }
-
-  }
+} */
 
 
-  @layer components {
+@layer components {
     .grille {
-      @apply px-6 lg:grid lg:grid-cols-(--my-grid) lg:justify-center lg:gap-12;
+        @apply px-6 lg:grid lg:grid-cols-(--my-grid) lg:justify-center lg:gap-12;
     }
+
     .noscroll {
-        overflow: hidden;}
-  }
+        overflow: hidden;
+    }
+}

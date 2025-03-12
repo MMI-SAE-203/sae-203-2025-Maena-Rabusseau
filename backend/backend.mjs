@@ -169,5 +169,42 @@ export async function filterByGenre(Genre) {
 
 
 
- 
+ // fonctiion pour la création des formulaires pour saisir et modifier des données.
     
+    export async function addfilm(film) {
+        try {
+            await pb.collection('Films').create(film);
+            return {
+                success: true,
+                message: 'Film ajouté avec succès'
+            };
+        } catch (error) {
+            console.log('Une erreur est survenue en ajoutant le film ', error);
+            return {
+                success: false,
+                message: 'Une erreur est survenue en ajoutant le film'
+            };
+        }
+    }
+    
+
+    // fonction 
+
+
+    
+export async function getInvites(id) {
+    try {
+        let data = await pb.collection('Films').getOne(id, { expand: 'Films_via_Invites' });
+        console.log(data);
+        data.img = pb.files.getURL(data, data.image);
+        data.expand.Films_via_Invites = data.expand.Films_via_Invites.map((invite) => {
+            invite.img = pb.files.getURL(invite, invite.photo);
+            return invite;
+        });
+        return data;
+    } catch (error) {
+        console.log('Une erreur est survenue en lisant l invvités', error);
+        return null;
+    }
+}
+

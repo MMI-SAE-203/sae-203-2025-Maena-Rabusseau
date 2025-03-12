@@ -1,6 +1,6 @@
 import {  Allevents, sortedfilms, AllActivitessorted, AllInvitessorted, oneIDFilm, oneIDActivites, oneIDInvites, AllActivitesByid, AllActivitesByinvitesName} from './backend.mjs'
 import {addNewFilms,updateFilmsbyId, addNewActivites, updateActivitesbyId, addNewInvites, updateInvitesbyId, DeleteFilmbyId,DeleteActivitebyId, DeleteInvitebyId} from './backend.mjs'
-import {newUser} from './backend.mjs'
+import {newUser, AllName} from './backend.mjs'
 /*
 try {
     const records = await Allevents() ;
@@ -211,7 +211,6 @@ const newuser = {
     "name": "Jack",
 };
 //await newUser(newuser);
-
 
 
 

@@ -1,22 +1,60 @@
 ---
-import { oneIDFilm } from '../../../backend/backend.mjs';
-import Base  from '../../layouts/Base.astro';
+import { oneIDFilm } from "../../../backend/backend.mjs";
+import Layout from "../../layouts/Layout.astro";
+import { getInvites } from "../../../backend/backend.mjs";
+import Card from "../../components/Card.astro";
 
-
-/*Affichage du détail d’un élément de la collection en utilisant une route dynamique.*/
+/*Affichage du détail d’un élément de la collection en utilisant une route dynamique.    Affichage d'un film */
 
 const { id } = Astro.params;
 const film = await oneIDFilm(id);
-if(!film){
-   return Astro.redirect('/programme');
+if (!film) {
+    return Astro.redirect("/programme");
 }
+
+/* Affichage de l'invités dans le film */
+
+// const invite = await getInvites(id);
+// if (!invite) {
+//     return Astro.redirect('/programme');}
 ---
 
+<Layout titre={film.Titre}>
+    <ul class="m-8 p-4 border-2 border-gray-300 rounded-lg bg-white shadow-md">
+        <li class="p-4">
+            <p class="p-4">Synopsis :</p>
+            <span>{film.Description}</span>
+        </li>
 
-<Base titre={film.Titre}>
-   <p>Synopsis :</p> <li>{film.Description}</li>
-    <ul>
-        <p>Liste des acteurs : </p><li>{film.Liste_des_acteurs}</li>
-    <p>Genre : </p>  <li>  {film.Genre}</li>
+        <li class="p-4">
+            <p class="p-4">Bande annonce :</p>
+            <span class="ml-19">{film.Bande_annonce}</span>
+        </li>
+
+        <li class="p-4">
+            <p class="p-4">Durée :</p>
+            <span class="ml-19">{film.Duree}</span>
+        </li>
+
+        <li class="p-4">
+            <p class="p-4">Langue :</p>
+            <span class="ml-19">{film.Langue}</span>
+        </li>
+
+        <li class="p-4">
+            <p class="p-4">Pays de production :</p>
+            <span class="ml-19">{film.Production}</span>
+        </li>
+        <!-- <p>Invités : </p>  <li>  {film.Invites}</li> -->
+        <!-- {invite.expand?.Films_via_Invites.map((i) => <Card {...i}/>)} -->
+
+        <li class="p-4">
+            <p class="p-4">Genre :</p><span class="ml-19">{film.Genre}</span>
+        </li>
+        <li class="p-4">
+            <p class="p-4">Liste des acteurs :</p><span class="ml-19"
+                >{film.Liste_des_acteurs}</span
+            >
+        </li>
     </ul>
-</Base>
+</Layout>

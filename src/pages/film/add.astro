@@ -1,28 +1,48 @@
 ---
-//facultatif
+import Layout from "../../layouts/Layout.astro";
+
+import { addfilm } from '../../../backend/backend.mjs';
+
+
+let message = "";
+if (Astro.request.method === "POST") {
+    const formData = await Astro.request.formData();
+    const response = await addfilm(formData);
+    message = response.message;
+}
+
+//Création des formulaires pour saisir et modifier des données.
 ---
-<!-- <h1 class="text-lg">Ajouter une offre</h1>
+
+<Base>
+<h1 class="text-lg">Ajouter un film </h1>
 {message && <p class="text-red-600">{}</p>}
-<form action="/offres/add" method="POST" enctype="multipart/form-data">
+<form action="/film/add" method="POST" enctype="multipart/form-data">
     <input
         type="text"
-        name="nomMaison"
-        placeholder="Nom de la maison"
+        name="Titre"
+        placeholder="Titre du film"
         required
         class="w-full mt-2 p-2 border border-gray-300 rounded-md"
     />
-    <input type="number" name="prix" placeholder="Prix" />
-    <input
-        type="number"
-        name="nbSdb"
-        placeholder="Nombre de salles de bain"
-    />
-    <input
-        type="number"
-        name="nbChambres"
-        placeholder="Nombre de chambres"
-    />
-    <input type="number" name="surface" placeholder="Superficie" />
+  <input 
+  type="text"
+  name="Description"
+  placeholder="Description du film"
+  />
+  <input 
+  type="text"
+  name="Genre"
+  placeholder="Genre du film"
+  />
+ 
+  <input 
+  type="text"
+  name="Liste_des_acteurs"
+  placeholder="Liste des acteurs"
+  />
     <input type="file" name="images" />
     <button type="submit">Ajouter</button>
-</form> -->
+</form> 
+
+</Base>

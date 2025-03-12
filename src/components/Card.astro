@@ -1,6 +1,6 @@
 ---
 const film = Astro.props;
-import { formatDate } from '../js/helper.js';
+import { formatDate } from "../js/helper.js";
 import ImagePB from "./ImagePB.astro";
 
 /*Affichage d’une liste de collection*/
@@ -8,16 +8,18 @@ import ImagePB from "./ImagePB.astro";
 
 <div>
     <li class="font-bold">{film.Titre}</li>
-<li>{ formatDate(film.projection)}</li>
+    <li>{formatDate(film.projection)}</li>
+
+    <!-- affichage de l’affiche du film -->
     <ImagePB
-    record={film}
-    field="Affiche"
-    alt={film.imgAlt}
-    classPicture="flex justify-center"
-    classImg="size-64 m-10 rounded-lg" 
-/>
+        record={film}
+        field="Affiche"
+        alt={film.imgAlt}
+        classPicture="flex justify-center"
+        classImg="w-50 m-10 rounded-lg"
+    />
 
-    <img class="size-64 m-10 rounded-lg" src={film.Affiche} alt="" />
-    <a href={`/film/${film.id}`}  class="text-blue-500 hover:underline">Voir plus</a>
+    <a href={`/film/${film.id}`} class="text-black underline"
+        >Voir plus</a
+    >
 </div>
-

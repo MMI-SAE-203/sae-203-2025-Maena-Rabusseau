@@ -1,9 +1,11 @@
 ---
 import { filterByGenre, sortedfilms } from "../../../backend/backend.mjs";
 import Card from "../../components/Card.astro";
-import Base from "../../layouts/Base.astro";
+import Layout from "../../layouts/Layout.astro";
 const film = Astro.props;
 import Picture from "astro/components/Picture.astro";
+import { addfilm } from '../../../backend/backend.mjs';
+
 
 /*Filtrage d’une liste via une route dynamique permettant d’afficher uniquement les éléments correspondants, comme par exemple l’affichage des films par catégorie ou par langue.*/
 
@@ -31,9 +33,44 @@ if (Astro.request.method === "POST") {
 }
 ---
 
-<Base>
+<Layout>
+    <!-- //Création des formulaires pour saisir et modifier des données. -->
+
+    <h2 class="text-lg">Ajouter un film </h2>
+    {message && <p class="text-red-600">{}</p>}
+    <form action="/film/add" method="POST" enctype="multipart/form-data">
+        <input
+            type="text"
+            name="Titre"
+            placeholder="Titre du film"
+            required
+            class="w-full mt-2 p-2 border border-gray-300 rounded-md"
+        />
+      <input 
+      type="text"
+      name="Description"
+      placeholder="Description du film"
+      />
+      <input 
+      type="text"
+      name="Genre"
+      placeholder="Genre du film"
+      />
+     
+      <input 
+      type="text"
+      name="Liste_des_acteurs"
+      placeholder="Liste des acteurs"
+      />
+        <input type="file" name="images" />
+        <button type="submit">Ajouter</button>
+    </form> 
+
+    <!-- Filtre par genre -->
+
     <form method="POST">
-        <label for="genre">Genre :</label>
+        <h2>Genre : </h2>
+        <!-- <label for="genre">Genre :</label> -->
         <select name="genre" id="genre">
             <option value="">Sélectionnez un genre</option>
             <option value="Enfant">Enfant</option>
@@ -46,13 +83,13 @@ if (Astro.request.method === "POST") {
 
     <!-- Affichage d’une liste de collection -->
 
-    <div class="flex justify-center ">
-        Toutes les films
+    <div class="flex justify-center list-none flex-wrap gap-4">
+      
+      <h1>Toutes les films</h1> 
         {films.map((film) => <Card {...film} />)}
     </div>
 
 
 
 
-    <Base /></Base
->
+    <Layout />

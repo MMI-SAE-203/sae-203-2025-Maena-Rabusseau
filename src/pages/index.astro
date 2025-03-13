@@ -10,6 +10,12 @@ import imgcinemapontarlier from "../assets/img/imgcinemapontarlier.avif";
 import imagechataccueil from "../assets/img/imagechataccueil.avif";
 import { sortedfilms, sortedinvite } from "../../backend/backend.mjs";
 import Carrouselinvite from "../components/Carrouselinvite.astro";
+import logobrasseriechatsnoirs from "../assets/img/logobrasseriechatsnoirs.avif";
+import logochatsanstoit from "../assets/img/logochatsanstoit.avif";
+import logochocolatmontagne from "../assets/img/logochocolatmontagne.avif";
+import logocinema from "../assets/img/logocinema.avif";
+import logodoubstourisme from "../assets/img/logodoubstourisme.avif";
+import logozooplus from "../assets/img/logozooplus.avif";
 
 const films = await sortedfilms();
 const filmsi = await sortedinvite();
@@ -155,6 +161,58 @@ const filmsi = await sortedinvite();
 					<li class="p-1">Cinécapsule</li>
 				</ul>
 			</div>
+		</div>
+		<div class="">
+			<ul class="flex gap-12 justify-center">
+				<li>
+					<Image
+						src={logobrasseriechatsnoirs}
+						alt="Image d'un chat et du cinéma "
+						class="w-35 pt-12 block mx-auto"
+						loading="lazy"
+					/>
+				</li>
+				<li>
+					<Image
+						src={logochatsanstoit}
+						alt="Image d'un chat et du cinéma "
+						class="w-35 pt-12 block mx-auto"
+						loading="lazy"
+					/>
+				</li>
+				<li>
+					<Image
+						src={logochocolatmontagne}
+						alt="Image d'un chat et du cinéma "
+						class="w-65 pb-80 block mx-auto"
+						loading="lazy"
+					/>
+				</li>
+				<li>
+					<Image
+						src={logocinema}
+						alt="Image d'un chat et du cinéma "
+						class="w-55 pb-15 block mx-auto"
+						loading="lazy"
+					/>
+				</li>
+				<li>
+					<Image
+						src={logodoubstourisme}
+						alt="Image d'un chat et du cinéma "
+						class="w-75 pb-2 block mx-auto"
+						loading="lazy"
+					/>
+				</li>
+				<li>
+					<Image
+						src={logozooplus}
+						alt="Image d'un chat et du cinéma "
+						class="w-35 pt-15 block mx-auto"
+						loading="lazy"
+					/>
+				</li>
+			</ul>
 		</div>
 	</body>
 </Layout>

@@ -35,21 +35,24 @@ console.log(film);
                 classPicture="flex "
                 classImg="w-50 m-10 rounded-lg"
             />
-             <li class="p-4 bg-[var(--color-sable)]">
+             <!-- <li class="p-4 bg-[var(--color-sable)]">
                 <p class="p-4"><strong>Bande annonce :</strong></p>
                 <span class="pl-19">{film.Bande_annonce}</span>
-            </li> 
-            <!-- {film.Bande_annonce && (
-                <div>
-                    <h2>Bande annonce</h2>
+            </li>  -->
+
+
+            {film.Bande_annonce && (
+                <div class="p-4 bg-[var(--color-sable)]">
+                    <p class="p-4 pl-19"><strong>Bande annonce : </strong></p>
                     <iframe
-                        className=""
+                       
                         src={film.Bande_annonce.replace("watch?v=", "embed/")}
-                        frameBorder="0"
-                        allowFullScreen
+                
+                        
                     ></iframe>
                 </div>
-            )} -->
+            )}
+            
             
             <li class="p-4 bg-[var(--color-sable)]">
                 <p class="p-4"><strong>Durée :</strong></p>

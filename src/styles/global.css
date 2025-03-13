@@ -20,12 +20,12 @@
 
     --my-grid: repeat(12, minmax(0, 64px));
 
-    --heading1: 40px;
-    --heading2: 32px;
-    --body1: 20px;
-    --heading3: 16px;
-    --body2: 15px;
-    --small: 13px
+    --heading1-font:"Quicksand" 40px;
+    --heading2-font:"Quicksand" 32px;
+    --body1-font: "Open Sans" 20px;
+    --heading3-font: "Quicksand" 16px;
+    --body2-font:  "Open Sans"15px;
+    --small-font: "Open Sans" 13px
 }
 
 

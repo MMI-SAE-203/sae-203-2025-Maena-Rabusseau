@@ -1,0 +1,112 @@
+---
+import { filterByDate, sortedactivite } from "../../../backend/backend.mjs";
+import Cardactivite from "../../components/Cardactivite.astro";
+import Layout from "../../layouts/Layout.astro";
+const activite = Astro.props;
+import Picture from "astro/components/Picture.astro";
+import { addactivite } from '../../../backend/backend.mjs';
+import Button from "../../components/Button.astro";
+import ImagePB from "../../components/ImagePB.astro";
+import { Image } from "astro:assets";
+import affichefilmloveanimal from "../../assets/img/affichefilmloveanimal.avif";
+import affichefilmanimalprotection from "../../assets/img/affichefilmanimalprotection.avif";
+
+
+
+
+
+
+/*Filtrage d’une liste via une route dynamique permettant d’afficher uniquement les éléments correspondants, comme par exemple l’affichage des films par catégorie ou par langue.*/
+
+let message = "";
+let activites = [];
+
+if (Astro.request.method === "POST") {
+    const data = await Astro.request.formData();
+    const date = data.get("date") as string;
+
+    if (date) {
+let activites = [];
+activites  = await filterByDate(date);
+
+        if (activites.length === 0) {
+            message = `Aucune activités trouvé pour la date "${date}".`;
+        } else {
+            message = `Liste des activités pour la date "${date}"`;
+        }
+    } else {
+        message = "Veuillez sélectionner une date.";
+    }
+} else {
+    activites = await sortedactivite();
+    message = "Liste des films pour toutes les dates.";
+}
+---
+
+<Layout>
+    <div>
+        <h2 class="text-center p-5"> <strong>Activités – 27 au 29 juin</strong></h2>
+        <p class="ml-5 text-center m-8">Découvrez notre programmation variée, combinant projections de films, ateliers créatifs, moments de détente et sensibilisation à la cause animale. Un festival où cinéma, chats, jeunes réalisateurs et bien-être se rencontrent pour petits et grands !</p>
+       
+    <p class="ml-5 text-center m-8"> <strong>Programme des séances</strong></p></div>
+
+
+
+    <!-- //Création des formulaires pour saisir et modifier des données. -->
+
+    <h2 class="text-lg m-8 text-center"><strong>Ajouter des idées d'activité </strong> </h2>
+    {message && <p class="text-red-600">{}</p>}
+    <form action="/activite/add" method="POST" enctype="multipart/form-data">
+        <input
+            type="text"
+            name="Description"
+            placeholder="Description de l'activité"
+            required
+            class=" mt-2 p-2 border border-gray-300 rounded-md"
+        />
+      <input 
+      type="text"
+      name="Type"
+      placeholder="Type de l'activité"
+        class=" mt-2 p-2 border border-gray-300 rounded-md"
+      />
+      <input 
+      type="text"
+      name="Lieu"
+      placeholder="Lieu de l'activité"
+        class=" mt-2 p-2 border border-gray-300 rounded-md"
+      />
+     
+    
+        <input type="file" name="images"
+         />
+        <button class=" m-8 p-3 border-2 border-gray-300 rounded-lg bg-white shadow-md" type="submit">Ajouter</button>
+    </form> 
+
+    <!-- Filtre par genre -->
+
+    <form method="POST">
+     
+        <select  class="m-15" name="date" id="date">
+            <option value="">Sélectionnez une date</option>
+            <option value="27 juin">27 juin</option>
+            <option value="28 juin">28 juin</option>
+            <option value="29 juin">29 juin</option>
+         </select
+        >
+        <input class=" p-2 border-2 border-gray-300 rounded-lg bg-white shadow-md" type="submit" value="Filtrer par date" />
+    </form>
+
+    <!-- Affichage d’une liste de collection -->
+
+    <div class="justify-center list-none flex-wrap text-center p-8 pb-5 ">
+      
+      <h2 class="p-8 text-center ">Toutes les activités </h2> 
+        {activites.map((activite) => <Cardactivite {...activite} />)}
+    </div>
+
+
+
+
+</Layout>
+

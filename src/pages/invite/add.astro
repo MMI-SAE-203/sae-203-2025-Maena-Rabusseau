@@ -1,0 +1,47 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+import { addinvite } from '../../../backend/backend.mjs';
+import Button from "../../components/Button.astro";
+
+
+let message = "";
+if (Astro.request.method === "POST") {
+    const formData = await Astro.request.formData();
+    const response = await addinvite(formData);
+    message = response.message;
+}
+
+//Création des formulaires pour saisir et modifier des données = invités
+---
+
+<Layout>
+<h1 >Ajouter un invité  </h1>
+{message && <p class="text-red-600">{}</p>}
+<form action="/invite/add" method="POST" enctype="multipart/form-data">
+    <input
+        type="text"
+        name="Nom"
+        placeholder="Nom de l'invité"
+        required
+        class="w-full mt-2 p-2 border border-gray-300 rounded-md"
+    />
+  <input
+  type="text"
+  name="Prénom"
+  placeholder ="Prénom de l'invité"
+  required
+  />
+  <input 
+  type="text"
+  name="Biographie"
+  placeholder="Biographie de l'invité"
+  />
+ 
+  
+    <input type="file" name="images" />
+
+    <button class="" type="submit">Ajouter</button>
+</form> 
+
+</Layout>

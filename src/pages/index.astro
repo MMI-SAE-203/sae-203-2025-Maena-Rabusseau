@@ -6,6 +6,8 @@ import Carrousel from "../components/Carrousel.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import imageyoga from "../assets/img/imageyoga.avif";
+import imgcinemapontarlier from "../assets/img/imgcinemapontarlier.avif";
+import imagechataccueil from "../assets/img/imagechataccueil.avif";
 ---
 
 <Layout>
@@ -17,14 +19,23 @@ import imageyoga from "../assets/img/imageyoga.avif";
 			>
 		</h2>
 
+		<Image
+			src={imagechataccueil}
+			alt="Image d'un chat et du cinéma "
+			class="w-90 m-10 rounded-lg block mx-auto"
+			loading="lazy"
+		/>
+
 		<h2 class="text-center p-2 mb-5">
 			<strong>Du 27 au 29 juin 2025</strong>
 		</h2>
 
 		<div>
 			<hr class="py-2 bg-[var(--color-bleu)]" />
-			<h2 class="ml-5 mb-2 lg:items-center">Au programme :</h2>
-			<ul class="p-3" role="list">
+			<h2 class="ml-5 mb-2 lg:items-center text-center">
+				<strong>Au programme :</strong>
+			</h2>
+			<ul class="p-3 text-center m-8" role="list">
 				<li class="ml-5 pb-4">
 					- Présentations de films de réalisateurs émergents
 				</li>
@@ -44,10 +55,10 @@ import imageyoga from "../assets/img/imageyoga.avif";
 			<Image
 				src={imageyoga}
 				alt="Image d'un chat et du cinéma "
-				class="w-90 m-10 rounded-lg"
+				class="w-90 m-10 rounded-lg block mx-auto"
 				loading="lazy"
 			/>
-			<p class="ml-5 mb-5">
+			<p class="ml-5 mb-5 text-center">
 				Participez à des ateliers interactifs, des discussions autour du
 				cinéma, et des animations surprises pour petits et grands !
 			</p>
@@ -57,15 +68,19 @@ import imageyoga from "../assets/img/imageyoga.avif";
 
 			<hr />
 			<div>
-				<h2 class="ml-5 mb-2 lg:items-center">Billeterie :</h2>
+				<h2 class="ml-5 mb-2 lg:items-center text-center m-9">
+					<strong>Billeterie :</strong>
+				</h2>
 				<ul>
 					<li
-						class="ml-5 pb-4 justify-center lg:justify-center lg:items-center"
+						class="ml-5 pb-4 justify-center text-center lg:justify-center lg:items-center"
 					>
 						Pass journée 10€<br />
 					</li>
 
-					<li class="ml-5 pb-4 lg:justify-center lg:items-center">
+					<li
+						class="ml-5 pb-4 lg:justify-center lg:items-center text-center"
+					>
 						Pass 3 jours 25€
 					</li>
 				</ul>
@@ -78,7 +93,9 @@ import imageyoga from "../assets/img/imageyoga.avif";
 			<div>
 				<!-- <Carrousel></Carrousel> -->
 				<hr class="py-2 bg-[var(--color-bleu)]" />
-				<h2 class="ml-5 mb-2 lg:items-center">Nos invités</h2>
+				<h2 class="ml-5 mb-2 lg:items-center text-center m-9">
+					<strong>Nos invités</strong>
+				</h2>
 				<img
 					src="assets/Images/medias/imagealainchabat.avif"
 					alt="Photo Alain Chabat"
@@ -90,16 +107,21 @@ import imageyoga from "../assets/img/imageyoga.avif";
 			<hr />
 			<div>
 				<hr class="py-2 bg-[var(--color-bleu)]" />
-				<h2 class="ml-5 mb-2 lg:items-center">Infos pratiques</h2>
-				<p class="ml-5 mb-2 lg:items-center">Où ?</p>
-				<p class="ml-5 mb-2 lg:items-center">
+				<h2 class="ml-5 mb-2 lg:items-center text-center m-9">
+					<strong>Infos pratiques</strong>
+				</h2>
+				<p class="text-center mb-2 lg:items-center m-8">Où ?</p>
+				<p class="ml-5 mb-2 lg:items-center text-center m-8">
 					Pontarlier Le lieu exact du festival le cinéma Olympia
 				</p>
-				<img
-					class="infos-pratiques__image"
-					src="assets/Images/medias/imagecinémapontarlier.avif"
+
+				<Image
+					src={imgcinemapontarlier}
 					alt="Photo cinéma Pontarlier "
+					class="w-90 m-10 rounded-lg block mx-auto"
+					loading="lazy"
 				/>
+
 				<div class="flex justify-center m-2">
 					<Button
 						href="/info"
@@ -110,10 +132,12 @@ import imageyoga from "../assets/img/imageyoga.avif";
 			<hr />
 			<div>
 				<hr class="py-2 bg-[var(--color-bleu)]" />
-				<h2 class="ml-5 mb-2 lg:items-center">Nos partenaires</h2>
+				<h2 class="ml-5 mb-2 lg:items-center text-center m-8 mb-3">
+					<strong>Nos partenaires</strong>
+				</h2>
 
 				<ul
-					class="text-center"
+					class="text-center p-9"
 					role="list"
 					aria-label="Partenaires du festival"
 				>

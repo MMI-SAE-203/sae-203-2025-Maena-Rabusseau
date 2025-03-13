@@ -1,0 +1,22 @@
+---
+const invite = Astro.props;
+import ImagePB from "./ImagePB.astro";
+
+/*Affichage d’une liste de collection*/
+---
+
+<div>
+    <li class="font-bold">{invite.Prenom}</li>
+    <li>{invite.Nom}</li>
+
+    <!-- affichage de l’affiche d'invité -->
+    <ImagePB
+        record={invite}
+        field="Photo"
+        alt={invite.imgAlt}
+        classPicture="flex justify-center"
+        classImg="w-50 m-10 rounded-lg"
+    />
+
+    <a href={`/invite/${invite.id}`} class=" m-15 text-black underline">Voir plus</a>
+</div>

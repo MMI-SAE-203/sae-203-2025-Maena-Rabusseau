@@ -1,6 +1,6 @@
 import {  Allevents, sortedfilms, AllActivitessorted, AllInvitessorted, oneIDFilm, oneIDActivites, oneIDInvites, AllActivitesByid, AllActivitesByinvitesName} from './backend.mjs'
 import {addNewFilms,updateFilmsbyId, addNewActivites, updateActivitesbyId, addNewInvites, updateInvitesbyId, DeleteFilmbyId,DeleteActivitebyId, DeleteInvitebyId} from './backend.mjs'
-import {newUser, AllName} from './backend.mjs'
+import {newUser,  oneIDInvite, sortedinvite, oneIDActivite, sortedactivite} from './backend.mjs'
 /*
 try {
     const records = await Allevents() ;
@@ -212,5 +212,61 @@ const newuser = {
 };
 //await newUser(newuser);
 
+//Invités 
+
+//une fonction qui retourne les infos d'un film en donnant son id en paramètre
+
+/*
+
+try {
+    const Onerecordss = await oneIDInvite('axkqs94x871it97');
+    console.table((Onerecordss));
+} catch (e) {
+    console.error(e);
+}
+*/
 
 
+
+  // une fonction qui retourne la liste de tous les films triés par prénom
+
+
+/*
+    try {
+        const recordss = await sortedinvite();
+        console.table((recordss));
+    } catch (e) {
+        console.error(e);
+    }
+    
+*/
+
+
+
+//Activités
+
+//une fonction qui retourne les infos d'une activité en donnant son id en paramètre
+
+/*
+
+try {
+    const Onerecordsss = await oneIDActivite('66k3z3zz935e0g0');
+    console.table((Onerecordsss));
+} catch (e) {
+    console.error(e);
+}
+*/
+
+
+
+  // une fonction qui retourne la liste de toutes les activités triés par description
+/*
+
+    try {
+        const recordsss = await sortedactivite();
+        console.table((recordsss));
+    } catch (e) {
+        console.error(e);
+    }
+    
+*/

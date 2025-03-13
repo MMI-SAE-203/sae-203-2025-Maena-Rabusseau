@@ -144,6 +144,8 @@ export async function newUser(newuser) {
 
 
 
+/*Films*/
+
 /* fonction de filtage des films par genre*/
 
 export async function filterByGenre(Genre) {
@@ -169,7 +171,7 @@ export async function filterByGenre(Genre) {
 
 
 
- // fonctiion pour la création des formulaires pour saisir et modifier des données.
+ // fonction pour la création des formulaires pour saisir et modifier des données.
     
     export async function addfilm(film) {
         try {
@@ -188,7 +190,7 @@ export async function filterByGenre(Genre) {
     }
     
 
-    // fonction 
+    // fonction non foctionnelle ....
 
 
     
@@ -208,3 +210,134 @@ export async function getInvites(id) {
     }
 }
 
+//invités 
+
+//une fonction qui retourne les infos d'un invité en donnant son id en paramètre
+
+export async function oneIDInvite(id) {
+    const Onerecordss = await pb.collection('Invites').getOne(id);
+    return Onerecordss;
+}
+
+
+ // fonction pour la création des formulaires pour saisir et modifier des données des invités 
+    
+ export async function addinvite(invite) {
+    try {
+        await pb.collection('Invites').create(invite);
+        return {
+            success: true,
+            message: 'Invité ajouté avec succès'
+        };
+    } catch (error) {
+        console.log('Une erreur est survenue en ajoutant l invité', error);
+        return {
+            success: false,
+            message: 'Une erreur est survenue en ajoutant l invité'
+        };
+    }
+}
+
+
+/* fonction de filtage des invités par rôle*/
+
+
+export async function filterByRole(role) {
+    try {
+        let data = await pb.collection('Invites').getFullList({
+            sort: 'prenom',
+            filter: `Role ~ '${role}'`
+        });
+
+        console.log(`Invités filtrés par rôle (${role}):`, data);
+
+        data = data.map((invite) => {
+            if (film.image) {
+                film.imageFile = pb.files.getFile(invite, invite.image);
+            }
+            return invite;
+        });
+
+        return data;
+    } catch (error) {
+        console.error(`Erreur lors du filtrage des films par rôle (${role}) :`, error);
+        return [];
+    }
+}
+
+
+
+// une fonction qui retourne la liste de tous les invités triés par  prénom
+
+export async function sortedinvite() {
+    const recordss = await pb.collection('Invites').getFullList({ sort: 'Prenom', });
+    return recordss;
+}
+
+
+
+//activités 
+
+
+
+//une fonction qui retourne les infos d'une activité en donnant son id en paramètre
+
+export async function oneIDActivite(id) {
+    const Onerecordsss = await pb.collection('Activites').getOne(id);
+    return Onerecordsss;
+}
+
+
+ // fonction pour la création des formulaires pour saisir et modifier des données des invités 
+    
+ export async function addactivite(activite) {
+    try {
+        await pb.collection('Activites').create(activite);
+        return {
+            success: true,
+            message: 'Activité ajouté avec succès'
+        };
+    } catch (error) {
+        console.log('Une erreur est survenue en ajoutant l activité', error);
+        return {
+            success: false,
+            message: 'Une erreur est survenue en ajoutant l activité'
+        };
+    }
+}
+
+
+/* fonction de filtage des activités par date*/
+
+
+export async function filterByDate(activite) {
+    try {
+        let data = await pb.collection('Invites').getFullList({
+            sort: 'Description',
+            filter: `Date_activite ~ '${activite}'`
+        });
+
+        console.log(`Activité filtrés par date (${activite}):`, data);
+
+        data = data.map((activite) => {
+            if (film.image) {
+                film.imageFile = pb.files.getFile(activite, activite.image);
+            }
+            return activite;
+        });
+
+        return data;
+    } catch (error) {
+        console.error(`Erreur lors du filtrage des films par rôle (${activite}) :`, error);
+        return [];
+    }
+}
+
+
+
+// une fonction qui retourne la liste de toutes les actvités  triés par  description
+
+export async function sortedactivite() {
+    const recordsss = await pb.collection('Activites').getFullList({ sort: 'Description', });
+    return recordsss;
+}

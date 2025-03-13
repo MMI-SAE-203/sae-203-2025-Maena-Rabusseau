@@ -1,0 +1,46 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+import { addactivite} from '../../../backend/backend.mjs';
+import Button from "../../components/Button.astro";
+
+
+let message = "";
+if (Astro.request.method === "POST") {
+    const formData = await Astro.request.formData();
+    const response = await addactivite(formData);
+    message = response.message;
+}
+
+//Création des formulaires pour saisir et modifier des données.
+---
+
+<Layout>
+<h1 >Ajouter des idées d'activité  </h1>
+{message && <p class="text-red-600">{}</p>}
+<form action="/activite/add" method="POST" enctype="multipart/form-data">
+    <input
+        type="text"
+        name="Description"
+        placeholder="Description de l'activité"
+        required
+        class="w-full mt-2 p-2 border border-gray-300 rounded-md"
+    />
+  <input
+  type="text"
+  name="Type"
+  placeholder ="Type de l'activité"
+  />
+  <input 
+  type="text"
+  name="Lieu"
+  placeholder="Lieu de l'activité"
+  />
+ 
+ 
+    <input type="file" name="images" />
+
+    <button class="" type="submit">Ajouter</button>
+</form> 
+
+</Layout>

@@ -1,0 +1,25 @@
+---
+const activite = Astro.props;
+// import { formatDate } from "../js/helper.js";
+import ImagePB from "./ImagePB.astro";
+console.log(activite);
+
+/*Affichage d’une liste de collection*/
+---
+
+<div>
+    <li class="font-bold">{activite.Description}</li>
+    <li>{activite.Date_activite}</li>
+
+    <ImagePB
+        record={activite}
+        field="Photo"
+        alt={activite.imgAlt}
+        classPicture="flex justify-center"
+        classImg="w-50 m-10 rounded-lg"
+    />
+
+    <a href={`/activite/${activite.id}`} class="text-black underline m-8"
+        >Voir plus</a
+    >
+</div>

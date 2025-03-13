@@ -1,10 +1,10 @@
 ---
-import { filterByGenre, sortedfilms } from "../../../backend/backend.mjs";
-import Card from "../../components/Card.astro";
+import { filterByRole, sortedinvite } from "../../../backend/backend.mjs";
+import Cardinvite from "../../components/Cardinvite.astro";
 import Layout from "../../layouts/Layout.astro";
-const film = Astro.props;
+const invite = Astro.props;
 import Picture from "astro/components/Picture.astro";
-import { addfilm } from '../../../backend/backend.mjs';
+import { addinvite } from '../../../backend/backend.mjs';
 import Button from "../../components/Button.astro";
 import ImagePB from "../../components/ImagePB.astro";
 import { Image } from "astro:assets";
@@ -19,92 +19,88 @@ import affichefilmanimalprotection from "../../assets/img/affichefilmanimalprote
 /*Filtrage d’une liste via une route dynamique permettant d’afficher uniquement les éléments correspondants, comme par exemple l’affichage des films par catégorie ou par langue.*/
 
 let message = "";
-let films = [];
+let invites = [];
 
 if (Astro.request.method === "POST") {
     const data = await Astro.request.formData();
-    const genre = data.get("genre") as string;
+    const role = data.get("genre") as string;
 
-    if (genre) {
-        films = await filterByGenre(genre);
+    if (role) {
+        invites = await filterByRole(role);
 
-        if (films.length === 0) {
-            message = `Aucun film trouvé pour le genre "${genre}".`;
+        if (invites.length === 0) {
+            message = `Aucun invités trouvé pour le rôle "${role}".`;
         } else {
-            message = `Liste des films pour le genre "${genre}"`;
+            message = `Liste des invités pour le rôle "${role}"`;
         }
     } else {
-        message = "Veuillez sélectionner un genre.";
+        message = "Veuillez sélectionner un rôle.";
     }
 } else {
-    films = await sortedfilms();
-    message = "Liste des films pour tous les genres";
+    invites = await sortedinvite();
+    message = "Liste des invités pour tous les rôles";
 }
 ---
 
 <Layout>
     <div>
-        <h2 class="text-center p-5"> <strong>Programmation du Miaullywood – 27 au 29 juin</strong></h2>
-        <p class="ml-5 text-center m-8">Découvrez notre programmation variée, combinant projections de films, ateliers créatifs, moments de détente et sensibilisation à la cause animale. Un festival où cinéma, chats, jeunes réalisateurs et bien-être se rencontrent pour petits et grands !</p>
+        <h2 class="text-center p-5"> <strong>Invités du festival Miaullywood – 27 au 29 juin</strong></h2>
+        <p class="ml-5 text-center m-8">Rencontrez nos invités d’exception : réalisateurs passionnés, acteurs talentueux et créateurs inspirants. Ils partageront avec vous leurs expériences, leurs œuvres et leur vision du cinéma. Un moment d’échange unique au cœur de notre festival, où passion et créativité prennent vie !</p>
        
-    <p class="ml-5 text-center m-8"> <strong>Programme des séances</strong></p></div>
+
     <!-- //Création des formulaires pour saisir et modifier des données. -->
 
-    <h2 class="text-lg m-8 text-center"><strong>Ajouter des idées de film </strong> </h2>
+    <h2 class="text-lg m-8 text-center" ><strong>Ajouter des idées d'invité </strong> </h2>
     {message && <p class="text-red-600">{}</p>}
-    <form action="/film/add" method="POST" enctype="multipart/form-data">
+    <form action="/invite/add" method="POST" enctype="multipart/form-data">
         <input
             type="text"
-            name="Titre"
-            placeholder="Titre du film"
+            name="Nom"
+            placeholder="Nom de l'invité"
             required
             class=" mt-2 p-2 border border-gray-300 rounded-md"
         />
-      <input 
+      <input
       type="text"
-      name="Description"
-      placeholder="Description du film"
+      name="Prénom"
+      placeholder ="Prénom de l'invité"
+      required
         class=" mt-2 p-2 border border-gray-300 rounded-md"
+      
       />
       <input 
       type="text"
-      name="Genre"
-      placeholder="Genre du film"
+      name="Biographie"
+      placeholder="Biographie de l'invité"
         class=" mt-2 p-2 border border-gray-300 rounded-md"
       />
      
-      <input 
-      type="text"
-      name="Liste_des_acteurs"
-      placeholder="Liste des acteurs"
-        class=" mt-2 p-2 border border-gray-300 rounded-md"
-      />
-        <input type="file" name="images"
-         />
+      
+        <input type="file" name="images" />
+    
         <button class=" m-8 p-3 border-2 border-gray-300 rounded-lg bg-white shadow-md" type="submit">Ajouter</button>
-    </form> 
+    </form>  
 
-    <!-- Filtre par genre -->
+    <!-- Filtre par rôle -->
 
     <form method="POST">
      
-        <!-- <label for="genre">Genre :</label> -->
-        <select  class="m-15" name="genre" id="genre">
-            <option value="">Sélectionnez un genre</option>
-            <option value="Enfant">Enfant</option>
-            <option value="Animation">Animation</option>
-            <option value="Documentaire">Documentaire</option>
-            <option value="Aventure">Aventure</option></select
+
+        <select class="m-15" name="role" id="role">
+            <option value="">Sélectionnez un rôle</option>
+            <option value="Réalisateur">Réalisateur</option>
+            <option value="Acteur">Acteur</option>
+        </select
         >
-        <input class=" p-2 border-2 border-gray-300 rounded-lg bg-white shadow-md" type="submit" value="Filtrer par genre" />
+        <input class=" p-2 border-2 border-gray-300 rounded-lg bg-white shadow-md" type="submit" value="Filtrer par rôle" />
     </form>
 
     <!-- Affichage d’une liste de collection -->
 
-    <div class="flex justify-center list-none flex-wrap gap-5 pt- 15 pb-40 ">
+    <div class="flex justify-center list-none flex-wrap gap-5 pt- 15 pb-40">
       
-      <h2 class="m-8">Tous les films</h2> 
-        {films.map((film) => <Card {...film} />)}
+      <h2 class="m-8">Tous les invités</h2> 
+        {invites.map((invite) => <Cardinvite {...invite} />)}
     </div>
 
 
@@ -112,10 +108,10 @@ if (Astro.request.method === "POST") {
 
     <!-- /*programme non dynamique*/ -->
 
-  
-    <hr class="py-2 bg-[var(--color-bordeau)]" /> 
-   <h2 class="text-center p-5"><strong>Programme détaillé</strong></h2>
-  
+<!--   
+       
+   <h2 class="text-center p-5">Programme détaillé</h2>
+   <hr class="py-2 bg-[var(--color-bordeau)]" />
     <div>
         <h2 class="text-center p-5"> <strong>Jour 1 : Jeudi 27 juin Matin</strong></h2>
         <p class="text-center p-5">10h00 – 12h00 : Atelier "Réalise ton court-métrage" Atelier créatif pour jeunes réalisateurs où ils apprendront les bases de la réalisation de films avec des professionnels du cinéma.</p>
@@ -148,8 +144,7 @@ if (Astro.request.method === "POST") {
         classPicture="flex justify-center block mx-auto"
         classImg="w-50 m-10 rounded-lg"
     />
-        <!-- <img src="assets/Images/medias/afichefilmuneviedechat.avif" alt="Affiche du film Une vie de chat"> -->
-        
+       
     
     </div>
     <hr class="py-2 bg-[var(--color-bordeau)]" />
@@ -237,6 +232,6 @@ if (Astro.request.method === "POST") {
       
       
     </div>
-    
+     -->
 </Layout>
 

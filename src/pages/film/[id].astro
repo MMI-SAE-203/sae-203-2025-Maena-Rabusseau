@@ -3,6 +3,7 @@ import { oneIDFilm } from "../../../backend/backend.mjs";
 import Layout from "../../layouts/Layout.astro";
 import { getInvites } from "../../../backend/backend.mjs";
 import Card from "../../components/Card.astro";
+import ImagePB from "../../components/ImagePB.astro";
 
 /*Affichage du détail d’un élément de la collection en utilisant une route dynamique.    Affichage d'un film */
 
@@ -11,6 +12,7 @@ const film = await oneIDFilm(id);
 if (!film) {
     return Astro.redirect("/programme");
 }
+console.log(film);
 
 /* Affichage de l'invités dans le film */
 
@@ -21,43 +23,54 @@ if (!film) {
 
 <Layout titre={film.Titre}>
     <div>
-        <ul
-            class="m-8 p-4 border-2 border-gray-300 rounded-lg bg-white shadow-md"
-        >
+        <ul class="p-8 p-4 border-2 border-gray-300 rounded-lg shadow-md">
             <li class="p-4 bg-[var(--color-sable)]">
-                <p class="p-4">Synopsis :</p>
+                <p class="p-4"><strong>Synopsis :</strong></p>
                 <span>{film.Description}</span>
             </li>
-
+            <ImagePB
+                record={film}
+                field="Affiche"
+                alt={film.imgAlt}
+                classPicture="flex "
+                classImg="w-50 m-10 rounded-lg"
+            />
             <li class="p-4 bg-[var(--color-sable)]">
-                <p class="p-4">Bande annonce :</p>
-                <span class="ml-19">{film.Bande_annonce}</span>
+                <p class="p-4"><strong>Bande annonce :</strong></p>
+                <span class="pl-19">{film.Bande_annonce}</span>
             </li>
 
             <li class="p-4 bg-[var(--color-sable)]">
-                <p class="p-4">Durée :</p>
-                <span class="ml-19">{film.Duree}</span>
+                <p class="p-4"><strong>Durée :</strong></p>
+                <span class="pl-19">{film.Duree}</span>
             </li>
 
             <li class="p-4 bg-[var(--color-sable)]">
-                <p class="p-4">Langue :</p>
-                <span class="ml-19">{film.Langue}</span>
+                <p class="p-4"><strong>Langue :</strong></p>
+                <span class="pl-19">{film.Langue}</span>
             </li>
 
             <li class="p-4 bg-[var(--color-sable)]">
-                <p class="p-4">Pays de production :</p>
-                <span class="ml-19">{film.Production}</span>
+                <p class="p-4"><strong>Pays de production :</strong></p>
+                <span class="pl-19">{film.Production}</span>
             </li>
-            <!-- <p>Invités : </p>  <li>  {film.Invites}</li> -->
-            <!-- {invite.expand?.Films_via_Invites.map((i) => <Card {...i}/>)} -->
 
             <li class="p-4 bg-[var(--color-sable)]">
-                <p class="p-4">Genre :</p><span class="ml-19">{film.Genre}</span
+                <p class="p-4"><strong>Invités :</strong></p>
+                <span class="pl-19"
+                    >{film.expand?.Invites.Prenom}
+                    <span>{film.expand?.Invites.Nom}</span>
+                </span>
+            </li>
+
+            <li class="p-4 bg-[var(--color-sable)]">
+                <p class="p-4"><strong>Genre :</strong></p><span class="pl-19"
+                    >{film.Genre}</span
                 >
             </li>
-            <li class="p-4">
-                <p class="p-4">Liste des acteurs :</p><span class="ml-19"
-                    >{film.Liste_des_acteurs}</span
+            <li class="p-4 bg-[var(--color-sable)]">
+                <p class="p-4"><strong>Liste des acteurs :</strong></p><span
+                    class="pl-19">{film.Liste_des_acteurs}</span
                 >
             </li>
         </ul>

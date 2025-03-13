@@ -3,6 +3,7 @@ import { oneIDInvite } from "../../../backend/backend.mjs";
 import Layout from "../../layouts/Layout.astro";
 import { getInvites } from "../../../backend/backend.mjs";
 import Cardinvite from "../../components/Card.astro";
+import ImagePB from "../../components/ImagePB.astro";
 
 /*Affichage du détail d’un élément de la collection en utilisant une route dynamique.    Affichage d'un invité */
 
@@ -21,25 +22,39 @@ if (!invite) {
 
 <Layout titre={invite.Prenom}>
     <div>
-        <ul
-            class="m-8 p-4 border-2 border-gray-300 rounded-lg bg-white shadow-md"
-        >
-        <li class="p-4 bg-[var(--color-sable)]">
-            <p class="p-4">Biographie :</p>
-            <span>{invite.Nom}</span>
-        </li>
+        <ul class="p-8 p-4 border-2 border-gray-300 rounded-lg shadow-md">
             <li class="p-4 bg-[var(--color-sable)]">
-                <p class="p-4">Biographie :</p>
+                <p class="p-4"><strong>Nom Prénom</strong></p>
+                <span>{invite.Nom}</span>
+                <span>{invite.Prenom}</span>
+            </li>
+
+            <ImagePB
+                record={invite}
+                field="Photo"
+                alt={invite.imgAlt}
+                classPicture="flex "
+                classImg="w-50  m-10 rounded-lg"
+            />
+            <li class="p-4 bg-[var(--color-sable)]">
+                <p class="p-4"><strong>Biographie :</strong></p>
                 <span>{invite.Biographie}</span>
             </li>
 
             <li class="p-4 bg-[var(--color-sable)]">
-                <p class="p-4">Rôle dans le festival :</p>
-                <span class="ml-19">{invite.Role}</span>
+                <p class="p-4"><strong>Rôle dans le festival :</strong></p>
+                <span class="pl-19">{invite.Role}</span>
             </li>
 
-       
-      
+            <li class="p-4 bg-[var(--color-sable)]">
+                <p class="p-4">
+                    <strong
+                        >Liste des activités associées durant le festival.</strong>
+                </p>
+                <span class="pl-19"
+                    >{invite.expand?.Activites.Type}
+                    <span>{invite.expand?.Activites.Description}</span>
+                </span>
             </li>
         </ul>
     </div>

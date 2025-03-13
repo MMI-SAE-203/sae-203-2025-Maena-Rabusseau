@@ -7,35 +7,35 @@ import ImgFlow from "../assets/img/flow.avif";
 import ImgKedi from "../assets/img/kedi.jpeg";
 import ImgUnevie from "../assets/img/uneviedechat.webp";
 import ImgLechat from "../assets/img/lechatpotte.webp";
-const { filmc } = Astro.props;
-console.log("carrousel", filmc);
+const { filmi } = Astro.props;
+console.log("Carrousel", filmi);
 ---
 
 <div
-    x-data=`{ filmc: ${JSON.stringify(filmc)}, index: 0 }`
+    x-data=`{ filmi: ${JSON.stringify(filmi)}, index: 0 }`
     x-effect="console.log('test')"
 >
     <!-- Titre du film -->
-    <h2 class="text-center my-4"><span x-text="filmc[index].Titre"></span></h2>
+    <h2 class="text-center my-4"><span x-text="filmi[index].Nom"></span></h2>
 
     <!-- Image du film avec lien -->
-    <a :href="'/film/' + filmc[index].id">
-        <img
-            :src="filmc[index].imageUrl"
-            alt="Affiche du film"
-            class="block m-auto w-80 h-auto object-cover"
-        />
-    </a>
+    <!-- <a :href="'/film/' + filmi[index].id"> -->
+    <img
+        :src="filmi[index].imageUrl"
+        alt="Affiche du film"
+        class="block m-auto w-60 h-auto object-cover"
+    />
+    <!-- </a> -->
 
     <!-- Navigation entre les films -->
     <div class="m-auto gap-4 w-min flex justify-between my-5">
         <button
-            @click="index = (index === 0 ? filmc.length - 1 : index - 1)"
+            @click="index = (index === 0 ? filmi.length - 1 : index - 1)"
             class="text-black border-2 rounded-2xl border-black p-3"
         >
         </button>
         <button
-            @click="index = (index === filmc.length - 1 ? 0 : index + 1)"
+            @click="index = (index === filmi.length - 1 ? 0 : index + 1)"
             class="text-black border-2 rounded-2xl border-black p-3"
         >
         </button>

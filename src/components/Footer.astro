@@ -3,11 +3,21 @@ import IconFacebook from "../assets/icones/icon_facebook.svg";
 import IconInstagram from "../assets/icones/icon_instagram.svg";
 import IconTwitter from "../assets/icones/icon_twitter.svg";
 import IconYoutube from "../assets/icones/icon_youtube.svg";
-import IconLogo from "../assets/icones/logo.png";
+import { Image } from "astro:assets";
+import IconLogo from "../assets/icones/logosite.png";
 ---
 
+<a href="/" class="flex items-center gap-2 bg-[var(--color-marron)] p-5">
+  <Image
+    src={IconLogo}
+    alt="Logo"
+    class="h-16 w-16 lg:h-16 lg:w-16"
+    loading="lazy"
+  />
+  <h2 class="text-white">Miaullywood</h2>
+</a>
 <nav
-  class="px-5 columns-2 gap-8 space-y-8 text-sm lg:text-base lg:columns-3 lg:col-span-3 lg:px-0 *:break-inside-avoid *:space-y-3 bg-[var(--color-marron)]"
+  class="text-center px-5 columns-2 gap-8 space-y-8 text-sm lg:text-base lg:columns-3 lg:col-span-3 lg:px-0 *:break-inside-avoid *:space-y-3 bg-[var(--color-marron)]"
 >
   <div>
     <ul>

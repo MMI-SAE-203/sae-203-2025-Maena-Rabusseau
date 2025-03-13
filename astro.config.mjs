@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config';
 
 
+import alpinejs from '@astrojs/alpinejs';
 
 import tailwindcss from '@tailwindcss/vite';
 
@@ -10,8 +11,10 @@ import tailwindcss from '@tailwindcss/vite';
 // https://astro.build/config
 export default defineConfig({
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss(), alpinejs()]
   },
+
   output: 'server',
   experimental: { svg: true },
+  integrations: [alpinejs()],
 });

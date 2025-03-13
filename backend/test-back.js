@@ -1,6 +1,6 @@
-import {  Allevents, sortedfilms, AllActivitessorted, AllInvitessorted, oneIDFilm, oneIDActivites, oneIDInvites, AllActivitesByid, AllActivitesByinvitesName} from './backend.mjs'
-import {addNewFilms,updateFilmsbyId, addNewActivites, updateActivitesbyId, addNewInvites, updateInvitesbyId, DeleteFilmbyId,DeleteActivitebyId, DeleteInvitebyId} from './backend.mjs'
-import {newUser,  oneIDInvite, sortedinvite, oneIDActivite, sortedactivite} from './backend.mjs'
+import { Allevents, sortedfilms, AllActivitessorted, AllInvitessorted, oneIDFilm, oneIDActivites, oneIDInvites, AllActivitesByid, AllActivitesByinvitesName } from './backend.mjs'
+import { addNewFilms, updateFilmsbyId, addNewActivites, updateActivitesbyId, addNewInvites, updateInvitesbyId, DeleteFilmbyId, DeleteActivitebyId, DeleteInvitebyId } from './backend.mjs'
+import { newUser, oneIDInvite, sortedinvite, oneIDActivite, sortedactivite } from './backend.mjs'
 /*
 try {
     const records = await Allevents() ;
@@ -11,35 +11,35 @@ try {
 */
 
 
-    // une fonction qui retourne la liste de tous les films triés par date de projection
+// une fonction qui retourne la liste de tous les films triés par date de projection
 
 
 
-   /* try {
-        const records = await sortedfilms();
-        console.table((records));
-    } catch (e) {
-        console.error(e);
-    }
-    */
+/* try {
+     const records = await sortedfilms();
+     console.table((records));
+ } catch (e) {
+     console.error(e);
+ }
+ */
 
 
 
 
 
-    // une fonction qui retourne la liste des activités (Ateliers, expositions, animations…) triés par date de projection    
+// une fonction qui retourne la liste des activités (Ateliers, expositions, animations…) triés par date de projection    
 
 
-  /*  try {
-        const records = await AllActivitessorted();
-        console.table((records));
-    } catch (e) {
-        console.error(e);
-    }
+/*  try {
+      const records = await AllActivitessorted();
+      console.table((records));
+  } catch (e) {
+      console.error(e);
+  }
 
 
 
-    */
+  */
 //une fonction qui retourne la liste de tous les acteurs / réalisateurs participant au festival triés par ordre alphabétique
 /*
 
@@ -141,7 +141,7 @@ const Newfilm = {
     "Titre": "test",
     "Genre": "horreur",
     "Description": "test",
-  
+
 };
 //await addNewFilms(Newfilm);
 
@@ -149,7 +149,7 @@ const Newfilm = {
 
 const data = {
     "Titre": "Le chat Potté 2 ",
-    "Genre": "Animation" ,
+    "Genre": "Animation",
 };
 //await updateFilmsbyId('vlhj227r9lup79u',data);
 
@@ -165,18 +165,18 @@ const data = {
 const Newactivites = {
     "Description": "Atelier de peinture",
     "Type": "Atelier",
-   
+
 };
 //await addNewActivites(Newactivites);
 
 
 const data1 = {
     "Description": "Atelier de peinture pour les enfants",
-    
+
 };
 //await updateActivitesbyId('obft5av60evc1l5',data1);
 
- //await DeleteActivitebyId('obft5av60evc1l5');
+//await DeleteActivitebyId('obft5av60evc1l5');
 
 
 
@@ -188,7 +188,7 @@ const Newinvites = {
     "Nom": "aguilar",
     "Prenom": "Julien",
     "Email": "julien@juju.fr",
-  
+
 };
 //await addNewInvites(Newinvites);
 
@@ -212,7 +212,7 @@ const newuser = {
 };
 //await newUser(newuser);
 
-//Invités 
+//Invités
 
 //une fonction qui retourne les infos d'un film en donnant son id en paramètre
 
@@ -228,7 +228,7 @@ try {
 
 
 
-  // une fonction qui retourne la liste de tous les films triés par prénom
+// une fonction qui retourne la liste de tous les films triés par prénom
 
 
 /*
@@ -238,7 +238,7 @@ try {
     } catch (e) {
         console.error(e);
     }
-    
+
 */
 
 
@@ -259,7 +259,7 @@ try {
 
 
 
-  // une fonction qui retourne la liste de toutes les activités triés par description
+// une fonction qui retourne la liste de toutes les activités triés par description
 /*
 
     try {

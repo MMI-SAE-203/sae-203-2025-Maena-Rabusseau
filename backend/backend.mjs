@@ -8,8 +8,8 @@ const POCKETBASE_URL = "http://127.0.0.1:8090";
 const pb = new PocketBase(POCKETBASE_URL);
 
 
-  // Exportation de l'instance PocketBase pour l'utiliser dans d'autres fichiers
-  export { pb };
+// Exportation de l'instance PocketBase pour l'utiliser dans d'autres fichiers
+export { pb };
 
 
 
@@ -23,7 +23,11 @@ export async function Allevents() {
 // une fonction qui retourne la liste de tous les films triés par date de projection
 
 export async function sortedfilms() {
-    const records = await pb.collection('Films').getFullList({ sort: 'projection', });
+    let records = await pb.collection('Films').getFullList({ sort: 'projection', });
+    records = records.map((film) => {
+        film.imageUrl = pb.files.getURL(film, film.Affiche);
+        return film;
+    });
     return records;
 }
 
@@ -46,7 +50,7 @@ export async function AllInvitessorted() {
 //une fonction qui retourne les infos d'un film en donnant son id en paramètre
 
 export async function oneIDFilm(id) {
-    const Onerecords = await pb.collection('Films').getOne(id);
+    const Onerecords = await pb.collection('Films').getOne(id, { expand: 'Invites' });
     return Onerecords;
 }
 
@@ -150,7 +154,8 @@ export async function newUser(newuser) {
 
 export async function filterByGenre(Genre) {
     try {
-        let data = await pb.collection('Films').getFullList({sort: 'projection', filter: `Genre ~ '${Genre}'` 
+        let data = await pb.collection('Films').getFullList({
+            sort: 'projection', filter: `Genre ~ '${Genre}'`
         });
         console.log(data);
 
@@ -165,64 +170,65 @@ export async function filterByGenre(Genre) {
     } catch (error) {
         console.log('Une erreur est survenue en filtrant la liste des films', error);
         return [];
-    }}
-
-
-
-
-
- // fonction pour la création des formulaires pour saisir et modifier des données.
-    
-    export async function addfilm(film) {
-        try {
-            await pb.collection('Films').create(film);
-            return {
-                success: true,
-                message: 'Film ajouté avec succès'
-            };
-        } catch (error) {
-            console.log('Une erreur est survenue en ajoutant le film ', error);
-            return {
-                success: false,
-                message: 'Une erreur est survenue en ajoutant le film'
-            };
-        }
-    }
-    
-
-    // fonction non foctionnelle ....
-
-
-    
-export async function getInvites(id) {
-    try {
-        let data = await pb.collection('Films').getOne(id, { expand: 'Films_via_Invites' });
-        console.log(data);
-        data.img = pb.files.getURL(data, data.image);
-        data.expand.Films_via_Invites = data.expand.Films_via_Invites.map((invite) => {
-            invite.img = pb.files.getURL(invite, invite.photo);
-            return invite;
-        });
-        return data;
-    } catch (error) {
-        console.log('Une erreur est survenue en lisant l invvités', error);
-        return null;
     }
 }
+
+
+
+
+
+// fonction pour la création des formulaires pour saisir et modifier des données.
+
+export async function addfilm(film) {
+    try {
+        await pb.collection('Films').create(film);
+        return {
+            success: true,
+            message: 'Film ajouté avec succès'
+        };
+    } catch (error) {
+        console.log('Une erreur est survenue en ajoutant le film ', error);
+        return {
+            success: false,
+            message: 'Une erreur est survenue en ajoutant le film'
+        };
+    }
+}
+
+
+// fonction non foctionnelle ....
+
+
+
+// export async function getInvites(id) {
+//     try {
+//         let data = await pb.collection('Films').getOne(id, { expand: 'Films_via_Invites' });
+//         console.log(data);
+//         data.img = pb.files.getURL(data, data.image);
+//         data.expand.Films_via_Invites = data.expand.Films_via_Invites.map((invite) => {
+//             invite.img = pb.files.getURL(invite, invite.photo);
+//             return invite;
+//         });
+//         return data;
+//     } catch (error) {
+//         console.log('Une erreur est survenue en lisant l invvités', error);
+//         return null;
+//     }
+// }
 
 //invités 
 
 //une fonction qui retourne les infos d'un invité en donnant son id en paramètre
 
 export async function oneIDInvite(id) {
-    const Onerecordss = await pb.collection('Invites').getOne(id);
+    const Onerecordss = await pb.collection('Invites').getOne(id, { expand: 'Activites' });
     return Onerecordss;
 }
 
 
- // fonction pour la création des formulaires pour saisir et modifier des données des invités 
-    
- export async function addinvite(invite) {
+// fonction pour la création des formulaires pour saisir et modifier des données des invités 
+
+export async function addinvite(invite) {
     try {
         await pb.collection('Invites').create(invite);
         return {
@@ -283,14 +289,14 @@ export async function sortedinvite() {
 //une fonction qui retourne les infos d'une activité en donnant son id en paramètre
 
 export async function oneIDActivite(id) {
-    const Onerecordsss = await pb.collection('Activites').getOne(id);
+    const Onerecordsss = await pb.collection('Activites').getOne(id, { expand: 'Invites' });
     return Onerecordsss;
 }
 
 
- // fonction pour la création des formulaires pour saisir et modifier des données des invités 
-    
- export async function addactivite(activite) {
+// fonction pour la création des formulaires pour saisir et modifier des données des invités 
+
+export async function addactivite(activite) {
     try {
         await pb.collection('Activites').create(activite);
         return {
@@ -335,9 +341,28 @@ export async function filterByDate(activite) {
 
 
 
-// une fonction qui retourne la liste de toutes les actvités  triés par  description
+// une fonction pour retourner le nom de l'inviité dans activité 
 
 export async function sortedactivite() {
-    const recordsss = await pb.collection('Activites').getFullList({ sort: 'Description', });
-    return recordsss;
+    let recordsss = await pb.collection('Activites').getFullList({ sort: 'Description', });
+    recordsss = recordsss.map((activite) => {
+        activite.imageUrl = pb.files.getURL(activite, activite.Photo);
+        return activite;
+    }); return recordsss;
 }
+
+
+
+// une fonction pour retourner l'activité 
+
+export async function sortedinvite() {
+    let recordssss = await pb.collection('Invites').getFullList({ sort: 'Nom', });
+    recordssss = recordssss.map((activite) => {
+        activite.imageUrl = pb.files.getURL(activite, activite.Photo);
+        return activite;
+    });
+    return recordssss;
+}
+
+
+

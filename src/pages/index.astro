@@ -8,6 +8,11 @@ import Footer from "../components/Footer.astro";
 import imageyoga from "../assets/img/imageyoga.avif";
 import imgcinemapontarlier from "../assets/img/imgcinemapontarlier.avif";
 import imagechataccueil from "../assets/img/imagechataccueil.avif";
+import { sortedfilms, sortedinvite } from "../../backend/backend.mjs";
+import Carrouselinvite from "../components/Carrouselinvite.astro";
+
+const films = await sortedfilms();
+const filmsi = await sortedinvite();
 ---
 
 <Layout>
@@ -48,7 +53,7 @@ import imagechataccueil from "../assets/img/imagechataccueil.avif";
 				<li class="ml-5 pb-4">- Séances de yoga de relaxation</li>
 			</ul>
 			<div class="flex justify-center">
-				<Button href="/programme" text="Programme" />
+				<Button href="/film" text="Programme" />
 			</div>
 		</div>
 		<div>
@@ -64,9 +69,9 @@ import imagechataccueil from "../assets/img/imagechataccueil.avif";
 			</p>
 			<hr class="py-2 bg-[var(--color-bleu)]" />
 
-			<!-- <Carrousel></Carrousel> -->
+			<Carrousel filmc={films} />
 
-			<hr />
+			<hr class="py-2 bg-[var(--color-bleu)]" />
 			<div>
 				<h2 class="ml-5 mb-2 lg:items-center text-center m-9">
 					<strong>Billeterie :</strong>
@@ -91,17 +96,14 @@ import imagechataccueil from "../assets/img/imagechataccueil.avif";
 			</div>
 			<hr />
 			<div>
-				<!-- <Carrousel></Carrousel> -->
 				<hr class="py-2 bg-[var(--color-bleu)]" />
 				<h2 class="ml-5 mb-2 lg:items-center text-center m-9">
 					<strong>Nos invités</strong>
 				</h2>
-				<img
-					src="assets/Images/medias/imagealainchabat.avif"
-					alt="Photo Alain Chabat"
-				/>
+				<Carrouselinvite filmi={filmsi} />
+
 				<div class="flex justify-center m-2">
-					<Button href="/invites" text="Tous nos invités  " />
+					<Button href="/invite" text="Tous nos invités  " />
 				</div>
 			</div>
 			<hr />

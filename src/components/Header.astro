@@ -9,14 +9,14 @@ import Button from "./Button.astro";
 <header
   class="flex items-center justify-between px-4 gap-8 border-b-2 bg-[var(--color-bordeau)] h-20"
 >
-  <a href="/">
+  <a href="/" class="flex items-center gap-2">
     <Image
       src={IconLogo}
       alt="Logo"
       class="h-16 w-16 lg:h-16 lg:w-16"
       loading="lazy"
     />
-    <p class="">Miaullywood</p>
+    <h2 class="text-white">Miaullywood</h2>
   </a>
   <button
     id="menu-btn"
@@ -56,8 +56,8 @@ import Button from "./Button.astro";
       </li>
       <li>
         <a class="block p-4 rounded-lgpy-4 text-white" href="/activite"
-          >Nos activités </a
-        >
+          >Nos activités
+        </a>
       </li>
       <li>
         <a class="block p-4 rounded-lg py-4 text-white" href="/apropos"

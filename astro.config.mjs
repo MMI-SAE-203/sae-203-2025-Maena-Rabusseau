@@ -7,7 +7,13 @@ import tailwindcss from '@tailwindcss/vite';
 
 
 
+
+
+
 import netlify from '@astrojs/netlify';
+
+
+
 
 
 
@@ -18,7 +24,6 @@ export default defineConfig({
   },
 
   output: 'server',
-
   experimental: { svg: true },
   integrations: [alpinejs()],
   adapter: netlify(),

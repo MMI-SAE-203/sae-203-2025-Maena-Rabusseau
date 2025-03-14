@@ -15,10 +15,6 @@ const imageUrl = record?.[field]
   : null;
 ---
 
-
-
-
-
 <!-- 
 {
   imageUrl && (
@@ -33,15 +29,7 @@ const imageUrl = record?.[field]
     />
   )
 } -->
-
-<img 
-  src={act.img} 
-  alt={act.Titre_A} 
-  className="size-fit block m-auto overflow-hidden max-w-[250px] max-h-[300px]" 
-/>
-
-
-
+<img src={imageUrl} alt={alt} class={classImg} />
 
 <!-- {
   act && (
@@ -54,6 +42,3 @@ const imageUrl = record?.[field]
     </a>
   )
 } -->
-
-
-

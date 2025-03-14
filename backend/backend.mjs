@@ -275,10 +275,10 @@ export async function filterByRole(role) {
 
 // une fonction qui retourne la liste de tous les invités triés par  prénom
 
-export async function sortedinvite() {
-    const recordss = await pb.collection('Invites').getFullList({ sort: 'Prenom', });
-    return recordss;
-}
+// export async function sortedinvite() {
+//     const recordss = await pb.collection('Invites').getFullList({ sort: 'Prenom', });
+//     return recordss;
+// }
 
 
 

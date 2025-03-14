@@ -26,5 +26,10 @@ export default defineConfig({
   output: 'server',
   experimental: { svg: true },
   integrations: [alpinejs()],
-  adapter: netlify(),
+  adapter: netlify({
+    imageCDN: false,
+  }),
+  image: {
+    domains: ['https://miaullywood.maena-rabusseau.fr']
+  },
 });

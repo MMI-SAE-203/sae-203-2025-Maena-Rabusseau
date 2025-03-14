@@ -2,7 +2,7 @@
 import PocketBase from "pocketbase";
 
 // Définition de l'URL de l'instance PocketBase
-const POCKETBASE_URL = "http://127.0.0.1:8090";
+const POCKETBASE_URL = "https://miaullywood.maena-rabusseau.fr:443";
 
 // Création de l'instance PocketBase avec l'URL définie plus haut
 const pb = new PocketBase(POCKETBASE_URL);
@@ -365,4 +365,30 @@ export async function sortedinvite() {
 }
 
 
+
+
+
+
+
+/* fonctions d’authentification .
+*/
+
+/*modification*/
+export async function updateuserbyId(id, datacaroline) {
+    await pb.collection('users').update(id, datacaroline);
+}
+
+
+
+/*suppression*/
+export async function DeleteUserbyId(id) {
+    await pb.collection('users').delete(id);
+}
+
+
+
+/*ajout*/
+export async function newUserauth2(newuser3) {
+    await pb.collection("users").create(newuser3);
+}
 

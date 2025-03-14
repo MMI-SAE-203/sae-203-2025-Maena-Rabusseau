@@ -4,6 +4,7 @@ import IconLogo from "../assets/icones/logosite.png";
 import { Image } from "astro:assets";
 const currentPath = Astro.url.pathname;
 import Button from "./Button.astro";
+import Buttonsign from "./Buttonsign.astro";
 ---
 
 <header
@@ -75,7 +76,13 @@ import Button from "./Button.astro";
           Contact
         </a>
       </li>
+      
     </ul>
+    <div class="flex items-center justify-center gap-4 px-4">
+      <Buttonsign href="/login" text="Login" />
+      <Buttonsign href="/signup" text="Sign Up" />
+    </div>
+
   </nav>
 </header>
 

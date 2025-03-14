@@ -1,6 +1,6 @@
 import { Allevents, sortedfilms, AllActivitessorted, AllInvitessorted, oneIDFilm, oneIDActivites, oneIDInvites, AllActivitesByid, AllActivitesByinvitesName } from './backend.mjs'
 import { addNewFilms, updateFilmsbyId, addNewActivites, updateActivitesbyId, addNewInvites, updateInvitesbyId, DeleteFilmbyId, DeleteActivitebyId, DeleteInvitebyId } from './backend.mjs'
-import { newUser, oneIDInvite, sortedinvite, oneIDActivite, sortedactivite } from './backend.mjs'
+import { newUser, oneIDInvite, sortedinvite, oneIDActivite, sortedactivite, updateuserbyId, DeleteUserbyId, newUserauth2 } from './backend.mjs'
 /*
 try {
     const records = await Allevents() ;
@@ -270,3 +270,30 @@ try {
     }
     
 */
+
+
+// fonctions d’authentification .
+
+/*modification*/
+
+const datacaroline = {
+    "name": "Caro"
+};
+//await updateuserbyId('59ofj55xq40z860', datacaroline);
+
+
+
+/*suppression*/
+
+//await DeleteUserbyId('5771bw247484gmk');
+
+
+/*ajout*/
+
+const newuser3 = {
+    "email": "test@test3.fr",
+    "password": "andré123456",
+    "passwordConfirm": "andré123456",
+    "name": "André",
+};
+await newUserauth2(newuser3);

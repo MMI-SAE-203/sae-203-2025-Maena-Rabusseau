@@ -1,0 +1,57 @@
+---
+import Layout from "../layouts/Layout.astro";
+import IconLogo from "../assets/icones/logosite.png";
+import Buttonsign from "../components/Buttonsign.astro";
+import { Image } from "astro:assets";
+const currentPath = Astro.url.pathname;
+import Button from "../components/Button.astro";
+---
+
+<Layout>
+    <main>
+        <h2 class="text-center p-5">
+            <strong
+                >Rejoignez-nous et créez votre compte en quelques clics pour ne
+                rien rater !</strong
+            >
+        </h2>
+        <div class="space-y-9 p-8 max-w-lg mx-auto">
+            <label class="block">
+                <span class="">Adresse mail</span>
+                <input
+                    type="text"
+                    class="mt-1 block w-full rounded-lg border border-black-300 p-2"
+                    placeholder="Votre adresse mail"
+                />
+            </label>
+            <label class="block">
+                <span class="">Mot de passe </span>
+                <input
+                    type="text"
+                    class="mt-1 block w-full rounded-lg border border-black-300 p-2"
+                    placeholder="Votre mot de passe"
+                />
+            </label>
+            <label class="block">
+                <span class="">Confirmer votre mot de passe</span>
+                <input
+                    type="text"
+                    class="mt-1 block w-full rounded-lg border border-black-300 p-2"
+                    placeholder="Votre mot de passe"
+                />
+            </label>
+            <div class="flex items-center justify-center gap-4 px-4">
+                <Button href="/signup" text="Sign Up" class="text-black" />
+            </div>
+        </div>
+        <hr class="py-2 bg-[var(--color-bordeau)]" />
+        <p class="ml-5 pb-4 text-center p-15">
+            <strong
+                >Abonnez-vous à notre newsletter pour ne rien manquer des
+                nouveautés.</strong>
+        </p>
+        <div class="flex items-center justify-center gap-4 px-4 p-8">
+            <Button  text="S'inscrire" class="text-black" />
+        </div>
+    </main>
+</Layout>

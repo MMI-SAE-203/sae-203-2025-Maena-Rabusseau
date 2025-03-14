@@ -15,30 +15,15 @@ const imageUrl = record?.[field]
   : null;
 ---
 
-
 {
   imageUrl && (
-    <img
-      // pictureAttributes={{ class: classPicture }}
-      // imgAttributes={{ class: classImg }}
-      // class={classImg}
-      // inferSize={true}
-      // formats={["avif", "webp"]}
-      // alt={alt || "Image"}
-      // src={imageUrl}
+    <Picture
+      pictureAttributes={{ class: classPicture }}
+      class={classImg}
+      inferSize={true}
+      formats={["avif", "webp"]}
+      alt={alt || "Image"}
+      src={imageUrl}
     />
   )
 }
-<!-- <img src={imageUrl} alt={alt} class={classImg} /> -->
-
-<!-- {
-  act && (
-    <a href={`/activites/${act.id}`}>
-      <img 
-        src={act.img} 
-        alt={act.Titre_A} 
-        className="size-fit block m-auto overflow-hidden max-w-[250px] max-h-[300px]" 
-      />
-    </a>
-  )
-} -->
